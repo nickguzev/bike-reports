@@ -6,6 +6,6 @@ country: "Турция"
 participants:
   - "Кирилл"
   - "Коля"
-  - "Паша"
+  - "Паша К"
 placeholder: true
 ---
