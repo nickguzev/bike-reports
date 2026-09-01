@@ -44,9 +44,9 @@ export function getTripBySlug(slug: string): Trip {
   const { data, content } = matter(raw);
   let contentHtml = marked.parse(content, { async: false }) as string;
 
-  // Temporary: render photo markers as direct hotlinks to the forum's file
-  // server, so we can see how it looks/behaves before deciding whether to
-  // migrate images to our own storage.
+  // Photo markers (<!-- photo: URL -->) in the markdown body render as
+  // plain <img> tags pointing wherever the URL points — currently our R2
+  // bucket, one file per trip folder, uploaded separately from this repo.
   contentHtml = contentHtml.replace(
     /<!--\s*photo:\s*(\S+?)\s*-->/g,
     (_match, url) =>
