@@ -5,6 +5,7 @@ import DailyKmChart from "@/components/DailyKmChart";
 import RouteMap from "@/components/RouteMap";
 import AuthorBlock from "@/components/AuthorBlock";
 import ParticipantsLine from "@/components/ParticipantsLine";
+import TripPager from "@/components/TripPager";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -29,9 +30,12 @@ export default async function TripPage({
 
   return (
     <div className="wrap">
-      <Link href="/" className="trip-back">
-        ← Все поездки
-      </Link>
+      <div className="trip-top-nav">
+        <Link href="/" className="trip-back">
+          ← Все поездки
+        </Link>
+        <TripPager prev={prev} next={next} compact />
+      </div>
 
       <article>
         <div className="trip-hero">
@@ -124,30 +128,7 @@ export default async function TripPage({
         )}
       </article>
 
-      <nav className="trip-pager">
-        {prev ? (
-          <Link href={`/trips/${prev.slug}`} className="trip-pager__link trip-pager__link--prev">
-            <span className="trip-pager__arrow">←</span>
-            <span>
-              <span className="trip-pager__label">Предыдущий отчёт</span>
-              <span className="trip-pager__title">{prev.title}</span>
-            </span>
-          </Link>
-        ) : (
-          <span />
-        )}
-        {next ? (
-          <Link href={`/trips/${next.slug}`} className="trip-pager__link trip-pager__link--next">
-            <span>
-              <span className="trip-pager__label">Следующий отчёт</span>
-              <span className="trip-pager__title">{next.title}</span>
-            </span>
-            <span className="trip-pager__arrow">→</span>
-          </Link>
-        ) : (
-          <span />
-        )}
-      </nav>
+      <TripPager prev={prev} next={next} />
     </div>
   );
 }

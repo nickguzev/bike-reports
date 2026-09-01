@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { getChronologicalTrips, getYearRange, type Trip } from "@/lib/trips";
-import DailyKmChart from "@/components/DailyKmChart";
+import { getAllTrips, getYearRange, type Trip } from "@/lib/trips";
 
 export default function Home() {
-  const trips = getChronologicalTrips();
+  const trips = getAllTrips();
   const { min, max } = getYearRange();
 
   return (
@@ -35,15 +34,7 @@ export default function Home() {
                   <span className="trip-row__title">{trip.title}</span>
                   <span className="trip-row__meta">{rowMeta(trip)}</span>
                 </span>
-                {trip.dailyKm?.length ? (
-                  <span className="trip-row__chart">
-                    <DailyKmChart dailyKm={trip.dailyKm} compact />
-                  </span>
-                ) : trip.placeholder ? (
-                  <span className="trip-row__soon">скоро</span>
-                ) : (
-                  <span />
-                )}
+                {trip.placeholder ? <span className="trip-row__soon">скоро</span> : <span />}
               </Link>
             ))}
           </div>
@@ -57,8 +48,9 @@ function rowMeta(trip: Trip): string {
   const parts: string[] = [];
   if (trip.country) parts.push(trip.country);
   if (typeof trip.distanceKm === "number") parts.push(`${trip.distanceKm} км`);
-  if (trip.dailyKm?.length) parts.push(`${trip.dailyKm.length} дн.`);
-  const peopleCount = trip.participants.length || trip.participantCount;
+  const days = trip.days ?? (trip.dailyKm?.length || undefined);
+  if (days) parts.push(`${days} дн.`);
+  const peopleCount = trip.participants.length;
   if (peopleCount) parts.push(`${peopleCount} ${pluralParticipants(peopleCount)}`);
   return parts.join(" · ");
 }

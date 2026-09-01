@@ -21,6 +21,7 @@ export type Trip = {
   order?: number;
   country: string;
   dates: string;
+  days?: number;
   placeholder: boolean;
   distanceKm?: number;
   elevationM?: number;
@@ -83,6 +84,7 @@ export function getTripBySlug(slug: string): Trip {
     order: data.order,
     country: data.country,
     dates: data.dates,
+    days: data.days,
     placeholder: Boolean(data.placeholder),
     distanceKm: data.distanceKm,
     elevationM: data.elevationM,
