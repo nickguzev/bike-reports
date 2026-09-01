@@ -83,6 +83,20 @@ a {
   margin-top: 0.5rem;
 }
 
+.home-stats-link {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 1.5rem;
+}
+
+.home-stats-link:hover {
+  color: var(--route);
+  border-color: var(--route);
+}
+
 /* -------- home: trip list -------- */
 
 .trip-list {

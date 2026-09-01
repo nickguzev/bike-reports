@@ -110,7 +110,7 @@ export default async function TripPage({
               </p>
             ) : null}
 
-            <ParticipantsLine names={trip.participants} />
+            <ParticipantsLine names={trip.participants} count={trip.participantCount} />
 
             <div className="trip-body">
               {trip.sections.map((section, i) => (

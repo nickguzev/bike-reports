@@ -16,7 +16,7 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "Веложурнал — архив велопоездок",
+  title: "Велотрипы 2011–2026",
   description: "Интерактивный архив отчётов о велопутешествиях по России и Европе.",
 };
 

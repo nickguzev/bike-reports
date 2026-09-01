@@ -27,6 +27,7 @@ export type Trip = {
   punctures?: number;
   lostBikes?: number;
   participants: string[];
+  participantCount?: number;
   route: string[];
   dailyKm: number[];
   gpxUrl?: string;
@@ -88,6 +89,7 @@ export function getTripBySlug(slug: string): Trip {
     punctures: data.punctures,
     lostBikes: data.lostBikes,
     participants: data.participants ?? [],
+    participantCount: data.participantCount,
     route: data.route ?? [],
     dailyKm: data.dailyKm ?? [],
     gpxUrl: data.gpxUrl,
