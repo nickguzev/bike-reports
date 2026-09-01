@@ -90,6 +90,10 @@ export default async function TripPage({
           dangerouslySetInnerHTML={{ __html: trip.contentHtml }}
         />
 
+        <p className="chart-block__label" style={{ marginBottom: "2rem" }}>
+          Фото временно подгружаются напрямую с форума Винского — перенос в постоянное хранилище (R2) в процессе.
+        </p>
+
         <div className="trip-footer">
           {trip.participants?.length ? (
             <div className="trip-footer__block">
