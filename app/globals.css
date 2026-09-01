@@ -171,6 +171,57 @@ a {
   font-style: italic;
 }
 
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin: 2.5rem 0 0.5rem;
+}
+
+.person-list {
+  border-top: 1px solid var(--line);
+}
+
+.person-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+}
+
+.person-row:hover .person-row__name {
+  color: var(--route);
+}
+
+.person-row__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--ink);
+  transition: color 0.15s ease;
+}
+
+.person-row__trips {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.person-row__km {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+  min-width: 5rem;
+  text-align: right;
+}
+
 /* -------- trip detail -------- */
 
 .trip-back {
