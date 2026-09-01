@@ -9,7 +9,7 @@
   --moss: #445c3c;
   --line: #c7bd9e;
 
-  --font-display: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
+  --font-display: var(--font-condensed), "Arial Narrow", sans-serif;
   --font-body: var(--font-source-serif), Georgia, serif;
 
   --measure: 34rem;
@@ -69,7 +69,7 @@ a {
 
 .wordmark {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: 0.04em;
   text-decoration: none;
@@ -110,14 +110,14 @@ a {
 
 .trip-row__year {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.75rem;
   color: var(--ink-faint);
 }
 
 .trip-row__title {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.5rem;
   letter-spacing: 0.01em;
   transition: color 0.15s ease;
@@ -211,7 +211,7 @@ a {
 
 .stat__value {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.6rem;
   color: var(--route);
   display: block;
@@ -264,7 +264,7 @@ a {
 
 .trip-body h3 {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: 0.01em;
   margin: 2em 0 0.6em;

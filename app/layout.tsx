@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, Source_Serif_4 } from "next/font/google";
+import { PT_Sans_Narrow, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 
-const barlowCondensed = Barlow_Condensed({
-  variable: "--font-barlow-condensed",
+const ptSansNarrow = PT_Sans_Narrow({
+  variable: "--font-condensed",
   subsets: ["latin", "cyrillic"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "700"],
 });
 
 const sourceSerif = Source_Serif_4({
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${barlowCondensed.variable} ${sourceSerif.variable}`}>
+    <html lang="ru" className={`${ptSansNarrow.variable} ${sourceSerif.variable}`}>
       <body>{children}</body>
     </html>
   );
