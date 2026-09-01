@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { getAllTrips } from "@/lib/trips";
+import { getAllTrips, getYearRange } from "@/lib/trips";
 import DailyKmChart from "@/components/DailyKmChart";
 
 export default function Home() {
   const trips = getAllTrips();
+  const { min, max } = getYearRange();
 
   return (
     <div className="wrap">
@@ -12,39 +13,51 @@ export default function Home() {
           <Link href="/" className="wordmark">
             вело<span>журнал</span>
           </Link>
-          <p className="site-header__tag">архив поездок на великах</p>
         </div>
       </header>
+
+      <h1 className="home-title">
+        Велотрипы {min}–{max}
+      </h1>
 
       <main>
         {trips.length === 0 ? (
           <p className="empty-state">Пока ни одной записи — первая поездка уже готовится.</p>
         ) : (
           <div className="trip-list">
-            {trips.map((trip) => (
-              <Link key={trip.slug} href={`/trips/${trip.slug}`} className="trip-row">
-                <span className="trip-row__year">{trip.year}</span>
-                <span>
-                  <span className="trip-row__title">{trip.title}</span>
-                  <span className="trip-row__meta">
-                    {trip.country} · {trip.distanceKm} км · {trip.participants.length}{" "}
-                    {pluralParticipants(trip.participants.length)}
+            {trips.map((trip) =>
+              trip.placeholder ? (
+                <Link
+                  key={trip.slug}
+                  href={`/trips/${trip.slug}`}
+                  className="trip-row trip-row--placeholder"
+                >
+                  <span className="trip-row__year">{trip.year}</span>
+                  <span>
+                    <span className="trip-row__title">{trip.title}</span>
+                    <span className="trip-row__meta">{trip.country}</span>
                   </span>
-                </span>
-                <span className="trip-row__chart">
-                  <DailyKmChart dailyKm={trip.dailyKm} compact />
-                </span>
-              </Link>
-            ))}
+                  <span className="trip-row__soon">скоро</span>
+                </Link>
+              ) : (
+                <Link key={trip.slug} href={`/trips/${trip.slug}`} className="trip-row">
+                  <span className="trip-row__year">{trip.year}</span>
+                  <span>
+                    <span className="trip-row__title">{trip.title}</span>
+                    <span className="trip-row__meta">
+                      {trip.country} · {trip.distanceKm} км · {trip.participants.length}{" "}
+                      {pluralParticipants(trip.participants.length)}
+                    </span>
+                  </span>
+                  <span className="trip-row__chart">
+                    <DailyKmChart dailyKm={trip.dailyKm} compact />
+                  </span>
+                </Link>
+              )
+            )}
           </div>
         )}
       </main>
-
-      <footer className="site-footer">
-        <div className="wrap" style={{ padding: 0 }}>
-          записки одной компании велосипедистов
-        </div>
-      </footer>
     </div>
   );
 }
