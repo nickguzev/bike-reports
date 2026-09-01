@@ -276,6 +276,15 @@ a {
   text-decoration-color: var(--route-soft);
 }
 
+.trip-photo {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.75rem 0;
+  border: 1px solid var(--line);
+  background: var(--paper-dim);
+}
+
 .trip-footer {
   max-width: var(--measure);
   margin: 2.5rem 0 4rem;

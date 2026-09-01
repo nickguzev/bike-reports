@@ -42,7 +42,16 @@ export function getAllTrips(): Trip[] {
 export function getTripBySlug(slug: string): Trip {
   const raw = fs.readFileSync(path.join(TRIPS_DIR, `${slug}.md`), "utf-8");
   const { data, content } = matter(raw);
-  const contentHtml = marked.parse(content, { async: false }) as string;
+  let contentHtml = marked.parse(content, { async: false }) as string;
+
+  // Temporary: render photo markers as direct hotlinks to the forum's file
+  // server, so we can see how it looks/behaves before deciding whether to
+  // migrate images to our own storage.
+  contentHtml = contentHtml.replace(
+    /<!--\s*photo:\s*(\S+?)\s*-->/g,
+    (_match, url) =>
+      `<img src="${url}" alt="" loading="lazy" class="trip-photo" />`
+  );
 
   return {
     slug,
