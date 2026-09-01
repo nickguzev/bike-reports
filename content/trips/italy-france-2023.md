@@ -1,6 +1,7 @@
 ---
-title: "Италия — Франция"
+title: "Тоскана — Лигурия"
+subtitle: "Из Флоренции в Ментон"
 year: 2023
-country: ""
+country: "Италия · Франция"
 placeholder: true
 ---

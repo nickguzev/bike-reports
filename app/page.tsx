@@ -8,16 +8,11 @@ export default function Home() {
 
   return (
     <div className="wrap">
-      <header className="site-header">
-        <div className="site-header__row">
-          <Link href="/" className="wordmark">
-            вело<span>журнал</span>
-          </Link>
-        </div>
-      </header>
-
       <h1 className="home-title">
-        Велотрипы {min}–{max}
+        <span className="home-title__main">Велотрипы</span>
+        <span className="home-title__years">
+          {min}–{max}
+        </span>
       </h1>
 
       <main>

@@ -54,39 +54,33 @@ a {
   padding: 0 1.5rem;
 }
 
-/* -------- header -------- */
-
-.site-header {
-  border-bottom: 1px solid var(--line);
-}
-
-.site-header__row {
-  display: flex;
-  align-items: baseline;
-  padding: 1.5rem 0 1.25rem;
-}
-
-.wordmark {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.25rem;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  color: var(--ink);
-}
-
-.wordmark span {
-  color: var(--route);
-}
+/* -------- masthead -------- */
 
 .home-title {
+  margin: 2rem 0 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.home-title__main {
+  display: block;
   font-family: var(--font-display);
   font-weight: 700;
   text-transform: uppercase;
-  font-size: clamp(2rem, 6vw, 3rem);
-  line-height: 1;
-  margin: 0.5rem 0 2rem;
+  font-size: clamp(2.75rem, 11vw, 4.75rem);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
   color: var(--ink);
+}
+
+.home-title__years {
+  display: block;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(1.1rem, 3.2vw, 1.5rem);
+  color: var(--route);
+  margin-top: 0.5rem;
 }
 
 /* -------- home: trip list -------- */
@@ -100,7 +94,7 @@ a {
   grid-template-columns: 4.5rem 1fr auto;
   gap: 1.25rem;
   align-items: center;
-  padding: 1.75rem 0;
+  padding: 1.05rem 0;
   border-bottom: 1px solid var(--line);
   text-decoration: none;
   color: inherit;
@@ -126,9 +120,10 @@ a {
 }
 
 .trip-row__meta {
+  display: block;
   font-size: 0.85rem;
   color: var(--ink-soft);
-  margin-top: 0.2rem;
+  margin-top: 0.15rem;
 }
 
 .trip-row__chart {

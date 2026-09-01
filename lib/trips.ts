@@ -18,6 +18,7 @@ export type Trip = {
   title: string;
   subtitle?: string;
   year: number;
+  order?: number;
   country: string;
   dates: string;
   placeholder: boolean;
@@ -78,6 +79,7 @@ export function getTripBySlug(slug: string): Trip {
     title: data.title,
     subtitle: data.subtitle,
     year: data.year,
+    order: data.order,
     country: data.country,
     dates: data.dates,
     placeholder: Boolean(data.placeholder),
@@ -97,12 +99,16 @@ export function getTripBySlug(slug: string): Trip {
 
 export function getAllTrips(): Trip[] {
   const trips = readSlugs().map((slug) => getTripBySlug(slug));
-  return trips.sort((a, b) => b.year - a.year);
+  return trips.sort(
+    (a, b) => b.year - a.year || (b.order ?? 0) - (a.order ?? 0)
+  );
 }
 
 /** Chronological (oldest → newest) order, for prev/next navigation. */
 export function getChronologicalTrips(): Trip[] {
-  return [...getAllTrips()].sort((a, b) => a.year - b.year);
+  return [...getAllTrips()].sort(
+    (a, b) => a.year - b.year || (a.order ?? 0) - (b.order ?? 0)
+  );
 }
 
 export function getAdjacentTrips(slug: string): {
