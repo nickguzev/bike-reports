@@ -7,6 +7,7 @@ country: "Белоруссия"
 dates: "август 2012"
 days: 2
 distanceKm: 120
+elevationM: 305
 participants:
   - "Лена"
   - "Руслан"
