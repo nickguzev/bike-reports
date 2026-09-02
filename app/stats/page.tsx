@@ -102,15 +102,22 @@ export default function StatsPage() {
 
       <h2 className="section-title">По странам</h2>
       <ol className="ranking-block__list">
-        {countryVisits.map((c) => (
-          <li key={c.country}>
-            <span>{c.country}</span>
-            <span>
-              {c.count} {pluralVisits(c.count)}
-            </span>
-          </li>
-        ))}
+        {countryVisits
+          .filter((c) => c.count > 1)
+          .map((c) => (
+            <li key={c.country}>
+              <span>{c.country}</span>
+              <span>
+                {c.count} {pluralVisits(c.count)}
+              </span>
+            </li>
+          ))}
       </ol>
+      {countryVisits.filter((c) => c.count === 1).length > 0 && (
+        <p className="chart-block__label">
+          По разу были в: {countryVisits.filter((c) => c.count === 1).map((c) => c.country).join(", ")}
+        </p>
+      )}
 
       <h2 className="section-title">Километраж по дням</h2>
       <KmTrendChart points={trend} />

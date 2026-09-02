@@ -28,21 +28,21 @@ export default function KmTrendChart({ points }: { points: Point[] }) {
 
   const kms = points.map((p) => p.km);
   const maxKm = Math.max(...kms);
-  const minKm = 0;
   const { slope, intercept } = linearRegression(kms);
 
   const availW = W - PAD_L - PAD_R;
   const availH = H - PAD_T - PAD_B;
 
-  const x = (i: number) => PAD_L + (i / (points.length - 1)) * availW;
-  const y = (km: number) => PAD_T + availH - ((km - minKm) / (maxKm - minKm || 1)) * availH;
+  const barGap = 1;
+  const barWidth = Math.max(availW / points.length - barGap, 1);
+  const barX = (i: number) => PAD_L + i * (barWidth + barGap);
+  const y = (km: number) => PAD_T + availH - (km / (maxKm || 1)) * availH;
+  const barH = (km: number) => (km / (maxKm || 1)) * availH;
 
-  const dotsPath = points.map((p, i) => `${x(i).toFixed(1)},${y(p.km).toFixed(1)}`);
-  const linePath = "M " + dotsPath.join(" L ");
-
+  const centerX = (i: number) => barX(i) + barWidth / 2;
   const trendStart = intercept;
   const trendEnd = slope * (points.length - 1) + intercept;
-  const trendPath = `M ${x(0)},${y(trendStart)} L ${x(points.length - 1)},${y(trendEnd)}`;
+  const trendPath = `M ${centerX(0)},${y(trendStart)} L ${centerX(points.length - 1)},${y(trendEnd)}`;
 
   const direction = slope > 0.3 ? "растёт" : slope < -0.3 ? "снижается" : "держится ровно";
 
@@ -52,7 +52,7 @@ export default function KmTrendChart({ points }: { points: Point[] }) {
   points.forEach((p, i) => {
     const year = p.label.split("·")[0];
     if (year !== lastLabel) {
-      yearLabels.push({ x: x(i), text: year });
+      yearLabels.push({ x: centerX(i), text: year });
       lastLabel = year;
     }
   });
@@ -66,9 +66,15 @@ export default function KmTrendChart({ points }: { points: Point[] }) {
           {Math.round(maxKm)} км
         </text>
 
-        <path d={linePath} fill="none" stroke="var(--route-soft)" strokeWidth={1.5} />
         {points.map((p, i) => (
-          <circle key={i} cx={x(i)} cy={y(p.km)} r={2} fill="var(--route)" />
+          <rect
+            key={i}
+            x={barX(i)}
+            y={y(p.km)}
+            width={barWidth}
+            height={Math.max(barH(p.km), 1)}
+            fill="var(--route)"
+          />
         ))}
 
         <path d={trendPath} fill="none" stroke="var(--moss)" strokeWidth={2} strokeDasharray="6 4" />
@@ -88,7 +94,7 @@ export default function KmTrendChart({ points }: { points: Point[] }) {
         ))}
       </svg>
       <p className="chart-block__label">
-        километраж по дням всех поездок, хронологически — тренд {direction} (пунктир)
+        {points.length} катальных дней за всё время, хронологически — тренд {direction} (пунктир)
       </p>
     </div>
   );
