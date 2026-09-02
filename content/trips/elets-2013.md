@@ -7,6 +7,7 @@ order: 2
 dates: "2–4 ноября 2013"
 days: 3
 distanceKm: 278
+elevationM: 765
 participants:
   - "Кирилл"
   - "Олег И"
