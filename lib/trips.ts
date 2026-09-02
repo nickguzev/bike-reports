@@ -35,6 +35,7 @@ export type Trip = {
     coastPoints: TrackPoint[];
     cities?: { lat: number; lon: number; name: string }[];
     mountainSide?: "north" | "none";
+    seaSide?: "south" | "north" | "east" | "west" | "none";
   };
   dailyKm: number[];
   gpxUrl?: string;
@@ -106,6 +107,7 @@ export function getTripBySlug(slug: string): Trip {
           coastPoints: data.geoCoast,
           cities: data.geoCities,
           mountainSide: data.geoMountains,
+          seaSide: data.geoSea,
         }
       : undefined,
     dailyKm: data.dailyKm ?? [],

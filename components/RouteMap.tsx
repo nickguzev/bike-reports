@@ -3,9 +3,10 @@ import type { TrackPoint } from "@/lib/gpx";
 type StopMarker = { lat: number; lon: number; label?: string };
 type CityMarker = { lat: number; lon: number; name: string };
 type GeoBackdrop = {
-  coastPoints: TrackPoint[]; // ordered along the coast; sea is assumed south of this line
+  coastPoints: TrackPoint[]; // ordered along the coast
   cities?: CityMarker[];
   mountainSide?: "north" | "none";
+  seaSide?: "south" | "north" | "east" | "west" | "none";
 };
 
 type Props = {
@@ -43,14 +44,23 @@ function GeoBackdropLayer({
 }) {
   const coastXY = geo.coastPoints.map(project);
   const coastPath = "M " + coastXY.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" L ");
-  // close the shape well below the visible frame to make a sea fill south of the coast
+
+  const seaSide = geo.seaSide ?? "south";
+  const first = coastXY[0];
+  const last = coastXY[coastXY.length - 1];
+  const edge: Record<string, number> = { south: H + 20, north: -20, east: W + 20, west: -20 };
+  const isVertical = seaSide === "south" || seaSide === "north";
+  const closeCoord = edge[seaSide];
   const seaPath =
-    coastPath +
-    ` L ${coastXY[coastXY.length - 1].x.toFixed(1)},${H + 20} L ${coastXY[0].x.toFixed(1)},${H + 20} Z`;
+    seaSide === "none"
+      ? null
+      : isVertical
+        ? coastPath + ` L ${last.x.toFixed(1)},${closeCoord} L ${first.x.toFixed(1)},${closeCoord} Z`
+        : coastPath + ` L ${closeCoord},${last.y.toFixed(1)} L ${closeCoord},${first.y.toFixed(1)} Z`;
 
   return (
     <g>
-      <path d={seaPath} fill="var(--route-soft)" opacity={0.16} />
+      {seaPath && <path d={seaPath} fill="var(--route-soft)" opacity={0.16} />}
       <path
         d={coastPath}
         fill="none"
