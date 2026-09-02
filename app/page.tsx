@@ -26,6 +26,10 @@ export default function Home() {
       <Link href="/stats" className="home-stats-link">
         Карта и статистика всех поездок →
       </Link>
+      <br />
+      <Link href="/people" className="home-stats-link">
+        Единовеломышленники →
+      </Link>
 
       <main>
         {trips.length === 0 ? (

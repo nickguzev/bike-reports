@@ -267,6 +267,52 @@ a {
   border-top: 1px solid var(--line);
 }
 
+.people-index {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 1rem 0 3rem;
+}
+
+.people-index__card {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.people-index__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.people-index__name {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.people-index__name:hover {
+  color: var(--route);
+}
+
+.people-index__stats {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+.people-index__bio {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: var(--measure);
+}
+
 .person-row {
   display: grid;
   grid-template-columns: 1fr auto auto;
