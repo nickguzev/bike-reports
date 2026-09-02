@@ -43,6 +43,27 @@ dailyKm:
   - 40
 gpxUrl: "http://www.gpsies.com/map.do?fileId=ozhsdyopuliozott&authkey=33806BF78FDACBC4828978C7858C46E9EB01923E7CF98513"
 source: "https://forum.awd.ru/viewtopic.php?t=134681"
+geoCoast:
+  - {lat: 43.2965, lon: 5.3698}
+  - {lat: 43.2140, lon: 5.5390}
+  - {lat: 43.1354, lon: 5.7539}
+  - {lat: 43.1242, lon: 5.9280}
+  - {lat: 43.1204, lon: 6.1286}
+  - {lat: 43.1378, lon: 6.3661}
+  - {lat: 43.2677, lon: 6.6407}
+  - {lat: 43.4250, lon: 6.7684}
+  - {lat: 43.5528, lon: 7.0174}
+  - {lat: 43.5804, lon: 7.1251}
+  - {lat: 43.7102, lon: 7.2620}
+  - {lat: 43.7384, lon: 7.4246}
+geoCities:
+  - {lat: 43.2965, lon: 5.3698, name: "Марсель"}
+  - {lat: 43.1242, lon: 5.9280, name: "Тулон"}
+  - {lat: 43.2677, lon: 6.6407, name: "Сен-Тропе"}
+  - {lat: 43.5528, lon: 7.0174, name: "Канн"}
+  - {lat: 43.7102, lon: 7.2620, name: "Ницца"}
+  - {lat: 43.7384, lon: 7.4246, name: "Монако"}
+geoMountains: north
 ---
 
 <!-- author: zhenyok -->

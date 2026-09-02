@@ -55,6 +55,7 @@ export default async function TripPage({
                   dayTracks={trip.dayTracks}
                   waypointCount={trip.route.length}
                   stopMarker={trip.overnightStop}
+                  geo={trip.geo}
                 />
                 {trip.gpxUrl && (
                   <a

@@ -31,12 +31,17 @@ export type Trip = {
   participantCount?: number;
   route: string[];
   overnightStop?: { lat: number; lon: number; label?: string };
+  geo?: {
+    coastPoints: TrackPoint[];
+    cities?: { lat: number; lon: number; name: string }[];
+    mountainSide?: "north" | "none";
+  };
   dailyKm: number[];
   gpxUrl?: string;
   source?: string;
   sections: TripSection[];
   track: TrackPoint[] | null;
-  dayTracks: TrackPoint[][] | null;
+  dayTracks: TrackPoint[][][] | null;
 };
 
 function readSlugs(): string[] {
@@ -96,6 +101,13 @@ export function getTripBySlug(slug: string): Trip {
     participantCount: data.participantCount,
     route: data.route ?? [],
     overnightStop: data.overnightStop,
+    geo: data.geoCoast
+      ? {
+          coastPoints: data.geoCoast,
+          cities: data.geoCities,
+          mountainSide: data.geoMountains,
+        }
+      : undefined,
     dailyKm: data.dailyKm ?? [],
     gpxUrl: data.gpxUrl,
     source: data.source,

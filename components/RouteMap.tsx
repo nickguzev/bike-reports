@@ -1,12 +1,19 @@
 import type { TrackPoint } from "@/lib/gpx";
 
 type StopMarker = { lat: number; lon: number; label?: string };
+type CityMarker = { lat: number; lon: number; name: string };
+type GeoBackdrop = {
+  coastPoints: TrackPoint[]; // ordered along the coast; sea is assumed south of this line
+  cities?: CityMarker[];
+  mountainSide?: "north" | "none";
+};
 
 type Props = {
   track: TrackPoint[] | null;
-  dayTracks?: TrackPoint[][] | null;
+  dayTracks?: TrackPoint[][][] | null;
   waypointCount: number;
   stopMarker?: StopMarker;
+  geo?: GeoBackdrop;
 };
 
 const W = 680;
@@ -15,14 +22,82 @@ const PAD = 30;
 
 const DAY_TONES = ["var(--route)", "var(--moss)"];
 
-export default function RouteMap({ track, dayTracks, waypointCount, stopMarker }: Props) {
+export default function RouteMap({ track, dayTracks, waypointCount, stopMarker, geo }: Props) {
   if (dayTracks && dayTracks.length > 0) {
-    return <MultiDayTrack days={dayTracks} stopMarker={stopMarker} />;
+    return <MultiDayTrack days={dayTracks} stopMarker={stopMarker} geo={geo} />;
   }
   if (track && track.length > 1) {
-    return <SingleTrack track={track} stopMarker={stopMarker} />;
+    return <SingleTrack track={track} stopMarker={stopMarker} geo={geo} />;
   }
   return <SchematicRoute count={Math.max(waypointCount, 2)} />;
+}
+
+function GeoBackdropLayer({
+  geo,
+  b,
+  project,
+}: {
+  geo: GeoBackdrop;
+  b: ReturnType<typeof bounds>;
+  project: (p: TrackPoint) => { x: number; y: number };
+}) {
+  const coastXY = geo.coastPoints.map(project);
+  const coastPath = "M " + coastXY.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" L ");
+  // close the shape well below the visible frame to make a sea fill south of the coast
+  const seaPath =
+    coastPath +
+    ` L ${coastXY[coastXY.length - 1].x.toFixed(1)},${H + 20} L ${coastXY[0].x.toFixed(1)},${H + 20} Z`;
+
+  return (
+    <g>
+      <path d={seaPath} fill="var(--route-soft)" opacity={0.16} />
+      <path
+        d={coastPath}
+        fill="none"
+        stroke="var(--ink-faint)"
+        strokeWidth={1.25}
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        opacity={0.55}
+      />
+
+      {geo.mountainSide === "north" && (
+        <g opacity={0.35}>
+          {Array.from({ length: 7 }).map((_, i) => {
+            const x = PAD + 10 + i * ((W - PAD * 2 - 20) / 6);
+            const peak = 10 + (i % 3) * 6;
+            return (
+              <path
+                key={i}
+                d={`M ${x - 16},${PAD + 22} L ${x},${PAD + 22 - peak} L ${x + 16},${PAD + 22} Z`}
+                fill="var(--ink-faint)"
+              />
+            );
+          })}
+        </g>
+      )}
+
+      {geo.cities?.map((city) => {
+        const p = project(city);
+        return (
+          <g key={city.name}>
+            <circle cx={p.x} cy={p.y} r={2.25} fill="var(--ink-faint)" />
+            <text
+              x={p.x}
+              y={p.y - 6}
+              textAnchor="middle"
+              fontSize="8"
+              fontFamily="var(--font-body)"
+              fontStyle="italic"
+              fill="var(--ink-faint)"
+            >
+              {city.name}
+            </text>
+          </g>
+        );
+      })}
+    </g>
+  );
 }
 
 function bounds(allPoints: TrackPoint[]) {
@@ -108,48 +183,58 @@ function Graticule({
   );
 }
 
-function MultiDayTrack({ days, stopMarker }: { days: TrackPoint[][]; stopMarker?: StopMarker }) {
-  const all = days.flat();
+function MultiDayTrack({
+  days,
+  stopMarker,
+  geo,
+}: {
+  days: TrackPoint[][][];
+  stopMarker?: StopMarker;
+  geo?: GeoBackdrop;
+}) {
+  const all = geo?.coastPoints?.length ? geo.coastPoints : days.flat(2);
   const b = bounds(all);
   const { project } = makeProjector(b);
 
   const stop = stopMarker ? project(stopMarker) : null;
-  const start = project(days[0][0]);
-  const end = project(days[days.length - 1][days[days.length - 1].length - 1]);
+  const firstDay = days[0][0];
+  const lastDay = days[days.length - 1][days[days.length - 1].length - 1];
+  const start = project(firstDay[0]);
+  const end = project(lastDay[lastDay.length - 1]);
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label="Трек поездки по дням">
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ overflow: "hidden" }} role="img" aria-label="Трек поездки по дням">
       <rect x={PAD} y={PAD} width={W - PAD * 2} height={H - PAD * 2} fill="var(--paper-dim)" opacity={0.5} />
       <Graticule b={b} project={project} />
+      {geo && <GeoBackdropLayer geo={geo} b={b} project={project} />}
 
-      {days.map((day, i) => {
-        const d =
-          "M " +
-          day
-            .map((p) => {
-              const q = project(p);
-              return `${q.x.toFixed(1)},${q.y.toFixed(1)}`;
-            })
-            .join(" L ");
-        const dayStart = project(day[0]);
+      {days.map((segments, i) => {
+        const dayStart = project(segments[0][0]);
+        const tone = DAY_TONES[i % DAY_TONES.length];
         return (
           <g key={i}>
-            <path
-              d={d}
-              fill="none"
-              stroke={DAY_TONES[i % DAY_TONES.length]}
-              strokeWidth={2.25}
-              strokeLinejoin="round"
-              strokeLinecap="round"
-            />
-            <circle
-              cx={dayStart.x}
-              cy={dayStart.y}
-              r={7}
-              fill="var(--paper)"
-              stroke={DAY_TONES[i % DAY_TONES.length]}
-              strokeWidth={1.5}
-            />
+            {segments.map((seg, si) => {
+              const d =
+                "M " +
+                seg
+                  .map((p) => {
+                    const q = project(p);
+                    return `${q.x.toFixed(1)},${q.y.toFixed(1)}`;
+                  })
+                  .join(" L ");
+              return (
+                <path
+                  key={si}
+                  d={d}
+                  fill="none"
+                  stroke={tone}
+                  strokeWidth={2.25}
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                />
+              );
+            })}
+            <circle cx={dayStart.x} cy={dayStart.y} r={7} fill="var(--paper)" stroke={tone} strokeWidth={1.5} />
             <text
               x={dayStart.x}
               y={dayStart.y + 3}
@@ -157,7 +242,7 @@ function MultiDayTrack({ days, stopMarker }: { days: TrackPoint[][]; stopMarker?
               fontSize="8.5"
               fontFamily="var(--font-display)"
               fontWeight={700}
-              fill={DAY_TONES[i % DAY_TONES.length]}
+              fill={tone}
             >
               {i + 1}
             </text>
@@ -190,8 +275,16 @@ function MultiDayTrack({ days, stopMarker }: { days: TrackPoint[][]; stopMarker?
   );
 }
 
-function SingleTrack({ track, stopMarker }: { track: TrackPoint[]; stopMarker?: StopMarker }) {
-  const b = bounds(track);
+function SingleTrack({
+  track,
+  stopMarker,
+  geo,
+}: {
+  track: TrackPoint[];
+  stopMarker?: StopMarker;
+  geo?: GeoBackdrop;
+}) {
+  const b = bounds(geo?.coastPoints?.length ? geo.coastPoints : track);
   const { project } = makeProjector(b);
 
   const pathD =
@@ -207,9 +300,10 @@ function SingleTrack({ track, stopMarker }: { track: TrackPoint[]; stopMarker?: 
   const stop = stopMarker ? project(stopMarker) : null;
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label="Трек поездки">
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ overflow: "hidden" }} role="img" aria-label="Трек поездки">
       <rect x={PAD} y={PAD} width={W - PAD * 2} height={H - PAD * 2} fill="var(--paper-dim)" opacity={0.5} />
       <Graticule b={b} project={project} />
+      {geo && <GeoBackdropLayer geo={geo} b={b} project={project} />}
       <path
         d={pathD}
         fill="none"
