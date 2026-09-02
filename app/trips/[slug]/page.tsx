@@ -12,6 +12,23 @@ export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  try {
+    const trip = getTripBySlug(slug);
+    return {
+      title: `${trip.title} (${trip.year}) — Велотрипы`,
+      description: trip.subtitle || `Отчёт о велопоездке: ${trip.title}, ${trip.year}`,
+    };
+  } catch {
+    return { title: "Поездка — Велотрипы" };
+  }
+}
+
 export default async function TripPage({
   params,
 }: {

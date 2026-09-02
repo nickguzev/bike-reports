@@ -6,6 +6,18 @@ export function generateStaticParams() {
   return getAllPeople().map((p) => ({ slug: p.slug }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const person = getPersonBySlug(slug);
+  return {
+    title: person ? `${person.name} — Велотрипы` : "Участник — Велотрипы",
+  };
+}
+
 export default async function PersonPage({
   params,
 }: {

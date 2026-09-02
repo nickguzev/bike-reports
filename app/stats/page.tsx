@@ -1,8 +1,14 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { getSiteStats, getTripRankings, getAllTripTracks, getDailyKmTrend } from "@/lib/stats";
 import { getAllPeople } from "@/lib/people";
 import AllTracksMap from "@/components/AllTracksMap";
 import KmTrendChart from "@/components/KmTrendChart";
+
+export const metadata: Metadata = {
+  title: "Карта и статистика — Велотрипы",
+  description: "Все треки на одной карте, рейтинги поездок и участники.",
+};
 
 export default function StatsPage() {
   const stats = getSiteStats();
