@@ -92,6 +92,20 @@ a {
   margin-bottom: 1.5rem;
 }
 
+.sibling-project-link {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  margin: 1.5rem 0 0;
+}
+
+.sibling-project-link:hover {
+  color: var(--route);
+  border-color: var(--route);
+}
+
 .home-stats-link:hover {
   color: var(--route);
   border-color: var(--route);
@@ -153,6 +167,28 @@ a {
   color: var(--ink-faint);
   font-style: italic;
   white-space: nowrap;
+}
+
+.trip-row__stats {
+  display: flex;
+  gap: 1.1rem;
+  flex-shrink: 0;
+}
+
+.trip-row__stat {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+  text-align: right;
+}
+
+.trip-row__stat b {
+  display: block;
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--ink);
+  line-height: 1.1;
 }
 
 .empty-state {

@@ -29,10 +29,7 @@ source: "https://forum.awd.ru/viewtopic.php?t=318425"
 
 <!-- author: kirill -->
 
-**Архив наших велопутешествий:**
-На велосипедах по Балканам и Апеннинам: 5 стран, 641 км и 1282 ругательства, которыми осыпал нас Паша Вдольволгитрип: Рыбинск-Ярославль-Кострома на велосипедах Велопаромотрип "6К": Калининград - Куршская Коса - Клайпеда - Киль - Копенгаген, или "Утомлённые сурепкой" Ноябрьский велотрэштрип. Достучаться до Ельца 5 улиток, 3 доширака, 120км на велах по братской Беларуси 277 км пробега и 288 не попадающих друг на друга зуба 5 проколов, 2 потерянных велосипеда, 368 км радости и пота
-
-Отчёт о поездке по Эстонии на велосипедах на 4 дня майских праздников. Общий пробег - https://drive.google.com/open?id=1dnVjXEehr1okdstCd15wgFkXqkc&usp=sharing.
+Отчёт о поездке по Эстонии на велосипедах на 4 дня майских праздников. Общий пробег - [ссылка](https://drive.google.com/open?id=1dnVjXEehr1okdstCd15wgFkXqkc&usp=sharing.)
 <!-- photo: https://forum.awd.ru/gallery/images/upload/fe4/53c/fe453c54c74701a80d59db93b50ea579.png -->
 Рождение идеи. Когда-то давно Колян предложил маршрут на 3-4 дня из Питера в Кингисепп по берегу моря. В этом году мы про него вспомнили, сначала решили продлить его небольшим крюком до Нарвы, а потом Паша сагитировал всех проехать аналогичный трип, но из Таллина. К началу марта, когда надо было брать билеты на поезд, нас набралось 7 человек, включая Ленку (спойлер - жопную фотку в этот раз не делали).
 <!-- photo: https://forum.awd.ru/gallery/images/upload/db3/8bc/db38bc713f821802ebf958055faeb288.jpg -->
@@ -160,7 +157,7 @@ source: "https://forum.awd.ru/viewtopic.php?t=318425"
 <!-- photo: https://forum.awd.ru/gallery/images/upload/513/626/51362617b1090f570c3011ee38528d7f.jpg -->
 Доезжаем до поворота на водопад Jägala juga. Очень живописный и аккуратный, как и всё эстонское. Обустроены лесенки и лавочки.
 
-[youtube]https://www.youtube.com/watch?v=LnPO81hLNZc&feature=youtu.be[/youtube]
+[смотреть на YouTube](https://www.youtube.com/watch?v=LnPO81hLNZc)
 <!-- photo: https://forum.awd.ru/gallery/images/upload/564/8a2/5648a2a61f2ade3d331af7970084824b.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/476/114/4761149526003ac221c2efe6a0f80cbf.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/41b/57d/41b57d5f294ef9d82b36c704e7b39594.jpg -->
@@ -179,7 +176,7 @@ source: "https://forum.awd.ru/viewtopic.php?t=318425"
 Дальше поля и деревни. Ещё утром удивились обилию уток, а сейчас периодически проезжаем целые стаи, сидящие около дороги, видимо, попали на сезон миграции.
 <!-- photo: https://forum.awd.ru/gallery/images/upload/04f/aa2/04faa2cabe482124e333df5d740da127.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/38c/d37/38cd3766b04510b944d6273aecd85aa4.jpg -->
-[youtube]https://www.youtube.com/watch?v=Q69y4PGdLg4&feature=youtu.be[/youtube]
+[смотреть на YouTube](https://www.youtube.com/watch?v=Q69y4PGdLg4)
 
 Проезжаем заправку, какое-то время стоим в нерешительности, не заехать ли туда за едой, потом едем дальше. На нашей велодорожке стоит бесхозная строительная техника, только собираемся залезть на неё и устроить фотосессию, как из проезжающей машины какой-то чел кричит нам что-то по-эстонски, из чего мы разбираем только "Алярма! Проблема!", что становится нашим мемом.
 <!-- photo: https://forum.awd.ru/gallery/images/upload/d6f/34d/d6f34d36b0a0964da6a9326f0696ff37.jpg -->
@@ -201,7 +198,7 @@ source: "https://forum.awd.ru/viewtopic.php?t=318425"
 <!-- photo: https://forum.awd.ru/gallery/images/upload/f83/1de/f831de5bc7f8107091ff88eb35503cdd.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/06a/c71/06ac714ba53cbdf4c93cd4575254f0cb.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/4ac/889/4ac88913dd6da843293b0c58cb1a4d61.jpg -->
-[youtube]https://www.youtube.com/watch?v=darBcZaCD6k&feature=youtu.be[/youtube]
+[смотреть на YouTube](https://www.youtube.com/watch?v=darBcZaCD6k)
 
 Наконец, воссоединяемся на берегу для пивной паузы.
 <!-- photo: https://forum.awd.ru/gallery/images/upload/469/4a7/4694a7e9099bc2ee0eeee0792ec75abe.jpg -->
@@ -243,7 +240,7 @@ source: "https://forum.awd.ru/viewtopic.php?t=318425"
 <!-- photo: https://forum.awd.ru/gallery/images/upload/9d2/3de/9d23de19d4675fdbfed56c8925eb9972.jpg -->
 Кроме нас купаться захотел только Коля - план был таков: быстро ныряем и бежим в душ греться. Душей в нашем доме было только 2, нырять пришлось по очереди. Когда шли к берегу, увидали вчерашнего мужичка и сказали ему, что идём купаться - он покачал головой и сказал "Оппасно!" (хорошо хоть "эбануттыми" не назвал, как смотритель маяка в нашем латвийском трипе:)
 
-[youtube]https://www.youtube.com/watch?v=kF4THzTQ7Z8&feature=youtu.be[/youtube]
+[смотреть на YouTube](https://www.youtube.com/watch?v=kF4THzTQ7Z8)
 <!-- photo: https://forum.awd.ru/gallery/images/upload/d54/8dd/d548dd356cf2bb23d9ef010859017e96.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/d9c/7ff/d9c7ff800c302e545ed05eb2ca4fc316.jpg -->
 После нырка адреналин выбил из организма все токсины. Стали неторопливо собираться. У Паши-некупальщика обнаружился прокол покрышки, пока он ремонтировал колесо,  Паша-купальщик с Леной и Олегом немного пораньше стартовали в Вызу на завтрак. А мы собрались и вчетвером быстренько добили оставшуюся бутылку вина, чтобы не тащить с собой.
@@ -293,7 +290,7 @@ source: "https://forum.awd.ru/viewtopic.php?t=318425"
 <!-- photo: https://forum.awd.ru/gallery/images/upload/afc/f06/afcf0649f8b6d09f9ddbc7b0d8c965fe.jpg -->
 Следующая достопримечательность - замок Тоолсе. К нему надо сворачивать с основной дороги, Паша и Олег решают забить и ехать дальше, а трио шоссеров и Юра остаются. У замка застаём парочку реконструкторов с шпагами, снимающих себя на гоупро со штатива.
 
-[youtube]https://www.youtube.com/watch?v=DQLQdl3SXIs&feature=youtu.be[/youtube]
+[смотреть на YouTube](https://www.youtube.com/watch?v=DQLQdl3SXIs)
 <!-- photo: https://forum.awd.ru/gallery/images/upload/ba5/acf/ba5acf133c7008fc6c03b886cc43c65c.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/d21/20e/d2120ee25cd5b1f2a4d2874de9c7a742.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/568/27a/56827ae7239b99a4ba468420f28ddde2.jpg -->
@@ -317,7 +314,7 @@ source: "https://forum.awd.ru/viewtopic.php?t=318425"
 <!-- photo: https://forum.awd.ru/gallery/images/upload/e1f/190/e1f190c136f7eb7a46958cb72c8744fb.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/e67/5ed/e675ed4a66fb3c903e8ada6831d0810e.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/72f/2b2/72f2b270373c909aae5eabdbbbd3c1e9.jpg -->
-[youtube]https://www.youtube.com/watch?v=rG35itNWMrk&feature=youtu.be[/youtube]
+[смотреть на YouTube](https://www.youtube.com/watch?v=rG35itNWMrk)
 
 Олег улетел вперёд.
 <!-- photo: https://forum.awd.ru/gallery/images/upload/3a1/399/3a139925c6aaff8cf064a94bb008055a.jpg -->
@@ -387,7 +384,7 @@ source: "https://forum.awd.ru/viewtopic.php?t=318425"
 <!-- photo: https://forum.awd.ru/gallery/images/upload/f6f/15b/f6f15b70d22f052a1f6754bf31bd5413.jpg -->
 Вдоль обрыва снизу вверх идёт поток воздуха. Кидать палочки можно бесконечно.
 
-[youtube]https://www.youtube.com/watch?v=hH6WLCm4G4g&feature=youtu.be[/youtube]
+[смотреть на YouTube](https://www.youtube.com/watch?v=hH6WLCm4G4g)
 
 "Пацаны, надо ехать!" Ну ок.
 <!-- photo: https://forum.awd.ru/gallery/images/upload/1ea/a0c/1eaa0c31aed7be289e6b4b3470c24b9c.jpg -->
@@ -400,7 +397,7 @@ source: "https://forum.awd.ru/viewtopic.php?t=318425"
 <!-- photo: https://forum.awd.ru/gallery/images/upload/afe/64c/afe64c8015064516f56d9616cc3f68a3.jpg -->
 Дорога подходит к краю обрыва, опять останавливаемся.
 
-[youtube]https://www.youtube.com/watch?v=Na2aALLXtgg&feature=youtu.be[/youtube]
+[смотреть на YouTube](https://www.youtube.com/watch?v=Na2aALLXtgg)
 <!-- photo: https://forum.awd.ru/gallery/images/upload/e7b/850/e7b850a39cb51d881dd6ba8340ef3f9e.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/b86/8bb/b868bbf885868fd62a590725f828bf9a.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/a79/5e3/a795e380118b99146dce6ee4c119bbf7.jpg -->
@@ -489,6 +486,6 @@ source: "https://forum.awd.ru/viewtopic.php?t=318425"
 <!-- photo: https://forum.awd.ru/gallery/images/upload/635/410/635410d93022598944f3760025e5a021.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/764/ded/764dedf77d25dbceef60a6fa06e6fe7a.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/eac/d66/eacd6688cb6513d78dfbf3caaa1e3a50.jpg -->
-[youtube]https://www.youtube.com/watch?v=p7-HzlG-P30&feature=youtu.be[/youtube]
+[смотреть на YouTube](https://www.youtube.com/watch?v=p7-HzlG-P30)
 
 Конец!

@@ -87,7 +87,7 @@ export default async function TripPage({
               {trip.days ?? trip.dailyKm?.length ? (
                 <div className="stat">
                   <span className="stat__value">{trip.days ?? trip.dailyKm.length}</span>
-                  <span className="stat__label">ходовых дней</span>
+                  <span className="stat__label">дней</span>
                 </div>
               ) : null}
               {typeof trip.punctures === "number" ? (

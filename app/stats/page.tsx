@@ -26,28 +26,22 @@ export default function StatsPage() {
       <div className="stat-strip">
         <div className="stat">
           <span className="stat__value">{stats.tripCount}</span>
-          <span className="stat__label">поездок в архиве</span>
+          <span className="stat__label">поездок</span>
         </div>
         <div className="stat">
           <span className="stat__value">{stats.totalKm}</span>
-          <span className="stat__label">суммарных километров</span>
+          <span className="stat__label">км</span>
         </div>
         {stats.totalElevation > 0 && (
           <div className="stat">
-            <span className="stat__value">{stats.totalElevation}</span>
-            <span className="stat__label">метров набора</span>
+            <span className="stat__value">{(stats.totalElevation / 1000).toFixed(1)}</span>
+            <span className="stat__label">км набора высоты</span>
           </div>
         )}
         <div className="stat">
           <span className="stat__value">{stats.peopleCount}</span>
           <span className="stat__label">участников</span>
         </div>
-        {stats.longestTrip && (
-          <div className="stat">
-            <span className="stat__value">{stats.longestTrip.distanceKm}</span>
-            <span className="stat__label">рекорд — {stats.longestTrip.title}</span>
-          </div>
-        )}
       </div>
 
       <h2 className="section-title">Рейтинги поездок</h2>

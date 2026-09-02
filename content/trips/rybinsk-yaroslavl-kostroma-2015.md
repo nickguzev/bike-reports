@@ -75,7 +75,7 @@ source: "https://forum.awd.ru/viewtopic.php?t=268254"
 <!-- photo: https://lh3.googleusercontent.com/4C1iw97Ys0aM0rr0Xy3nBjcY2X447T0V24aLcHSDcp7d=w948-h711-no -->
 бегут!
 <!-- photo: https://lh3.googleusercontent.com/HwnCfGw3pIgLqzxOfpj_TD6XbnRHHejWp6mpLGzHmXkM=w948-h711-no -->
-[youtube]http://www.youtube.com/watch?v=Uh3mkFGpd2I&feature=youtu.be[/youtube]
+[смотреть на YouTube](http://www.youtube.com/watch?v=Uh3mkFGpd2I)
 
 Дождались наших новых знакомых из поезда, покричали слова поддержки и с чувством выполненного долга наконец поехали в путь через мост.
 <!-- photo: https://lh3.googleusercontent.com/17sFlYHBUsc7Ahz8xePA-8cUV9i1djwuN9oAooIEFEf0=w948-h711-no -->
@@ -84,7 +84,7 @@ source: "https://forum.awd.ru/viewtopic.php?t=268254"
 <!-- photo: https://lh3.googleusercontent.com/qqMpMKvBIj3qNwJaP9gAB19U-uyFUmyenyXZ1qv0dg_2=w948-h711-no -->
 Внутри комплекса играл рок и, видимо, начинался какой-то байкерский фест, но долг звал нас продолжать путь. На ходу преодолели вброд речку, которая неожиданно оказалось глубже, чем нам виделось.
 <!-- photo: https://lh3.googleusercontent.com/16KAF8SRZF1iI8ZWKLZNQsklmf1yyG3Z6tufLAhuoEBI=w948-h711-no -->
-[youtube]https://www.youtube.com/watch?v=O7VY6FCbkVo&feature=youtu.be[/youtube]
+[смотреть на YouTube](https://www.youtube.com/watch?v=O7VY6FCbkVo)
 
 За речкой начиналась грунтовка с грязными лужами, в которые по очереди свалились трое из четверых. Но было весело, это вам не по ровному шоссе вкручивать!
 <!-- photo: https://lh3.googleusercontent.com/LwFsBTI4ZWC9WnhUFfIOjo8F39kG_cAtNJZg6-YeAZ6r=w948-h711-no -->
