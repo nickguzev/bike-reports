@@ -527,6 +527,11 @@ a {
   background: var(--paper-dim);
 }
 
+.trip-video.instagram-media {
+  margin: 1.75rem auto !important;
+  max-width: 400px;
+}
+
 .trip-pager {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -84,6 +84,18 @@ export function getTripBySlug(slug: string): Trip {
       `<img src="${url}" alt="" loading="lazy" class="trip-photo" />`
   );
 
+  // Video markers (<!-- video: instagram-url -->) render as Instagram's own
+  // official embed widget (blockquote + their embed.js processes it client
+  // side — see components loaded in the trip page). Not a reproduction of
+  // the video itself, just the sanctioned embed Instagram provides.
+  contentHtml = contentHtml.replace(
+    /<!--\s*video:\s*(\S+?)\s*-->/g,
+    (_match, rawUrl) => {
+      const url = rawUrl.split("?")[0].replace(/\/$/, "") + "/";
+      return `<blockquote class="instagram-media trip-video" data-instgrm-permalink="${url}" data-instgrm-version="14"><a href="${url}" target="_blank" rel="noopener noreferrer">Смотреть в Instagram</a></blockquote>`;
+    }
+  );
+
   return {
     slug,
     title: data.title,

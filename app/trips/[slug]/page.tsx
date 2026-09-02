@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import { getAllSlugs, getTripBySlug, getAdjacentTrips } from "@/lib/trips";
 import DailyKmChart from "@/components/DailyKmChart";
@@ -138,6 +139,8 @@ export default async function TripPage({
           </>
         )}
       </article>
+
+      <Script src="https://www.instagram.com/embed.js" strategy="lazyOnload" />
 
       <TripPager prev={prev} next={next} />
     </div>
