@@ -6,7 +6,7 @@ country: "Россия"
 dates: "27–28 июня 2026"
 days: 2
 distanceKm: 206
-elevationM: 2810
+elevationM: 631
 dailyKm:
   - 103.4
   - 102.2
