@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getSiteStats, getTripRankings, getAllTripTracks, getDailyKmTrend } from "@/lib/stats";
+import { getSiteStats, getTripRankings, getAllTripTracks, getDailyKmTrend, getCountryVisits } from "@/lib/stats";
 import { getAllPeople } from "@/lib/people";
 import AllTracksMap from "@/components/AllTracksMap";
 import KmTrendChart from "@/components/KmTrendChart";
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 export default function StatsPage() {
   const stats = getSiteStats();
   const rankings = getTripRankings();
+  const countryVisits = getCountryVisits();
   const tracks = getAllTripTracks();
   const trend = getDailyKmTrend();
   const people = getAllPeople().sort(
@@ -99,6 +100,18 @@ export default function StatsPage() {
         />
       </div>
 
+      <h2 className="section-title">По странам</h2>
+      <ol className="ranking-block__list">
+        {countryVisits.map((c) => (
+          <li key={c.country}>
+            <span>{c.country}</span>
+            <span>
+              {c.count} {pluralVisits(c.count)}
+            </span>
+          </li>
+        ))}
+      </ol>
+
       <h2 className="section-title">Километраж по дням</h2>
       <KmTrendChart points={trend} />
 
@@ -126,6 +139,14 @@ function pluralTrips(n: number) {
   if (mod10 === 1 && mod100 !== 11) return "поездка";
   if ([2, 3, 4].includes(mod10) && ![12, 13, 14].includes(mod100)) return "поездки";
   return "поездок";
+}
+
+function pluralVisits(n: number) {
+  const mod10 = n % 10;
+  const mod100 = n % 100;
+  if (mod10 === 1 && mod100 !== 11) return "раз";
+  if ([2, 3, 4].includes(mod10) && ![12, 13, 14].includes(mod100)) return "раза";
+  return "раз";
 }
 
 function RankingBlock({

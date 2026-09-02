@@ -82,6 +82,30 @@ export function getAllTripTracks(): TripTrack[] {
   return result;
 }
 
+/** How many times each country has been visited, across every trip. */
+export function getCountryVisits(): { country: string; count: number }[] {
+  const trips = getAllTrips().filter((t) => !t.placeholder && t.country);
+  const counts = new Map<string, number>();
+
+  for (const t of trips) {
+    const countries = t.country
+      .split("·")
+      .map((s) => s.trim())
+      .filter(Boolean)
+      // the country field is repurposed as a plain description for at least
+      // one trip ("из Выборга в Санкт-Петербург") — real country names are
+      // always capitalized, so skip anything that isn't.
+      .filter((s) => s[0] === s[0].toUpperCase() && s[0] !== s[0].toLowerCase());
+    for (const c of countries) {
+      counts.set(c, (counts.get(c) ?? 0) + 1);
+    }
+  }
+
+  return [...counts.entries()]
+    .map(([country, count]) => ({ country, count }))
+    .sort((a, b) => b.count - a.count || a.country.localeCompare(b.country, "ru"));
+}
+
 /** One point per riding day across every trip, in chronological order, for a "is the average daily distance trending up?" chart. */
 export function getDailyKmTrend(): { label: string; km: number }[] {
   const trips = [...getAllTrips()]
