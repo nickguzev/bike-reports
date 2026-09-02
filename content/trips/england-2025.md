@@ -5,8 +5,15 @@ year: 2025
 country: "Англия"
 dates: "27 июля – 1 августа 2025"
 days: 6
-distanceKm: 525
-elevationM: 3900
+distanceKm: 506
+elevationM: 2383
+dailyKm:
+  - 69.7
+  - 80.1
+  - 102.2
+  - 93.0
+  - 85.1
+  - 75.8
 participants:
   - "Кирилл"
   - "Паша К"

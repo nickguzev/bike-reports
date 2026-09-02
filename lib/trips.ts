@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
-import { getTrackForSlug, type TrackPoint } from "@/lib/gpx";
+import { getTrackForSlug, getDayTracksForSlug, type TrackPoint } from "@/lib/gpx";
 
 const TRIPS_DIR = path.join(process.cwd(), "content", "trips");
 
@@ -36,6 +36,7 @@ export type Trip = {
   source?: string;
   sections: TripSection[];
   track: TrackPoint[] | null;
+  dayTracks: TrackPoint[][] | null;
 };
 
 function readSlugs(): string[] {
@@ -100,6 +101,7 @@ export function getTripBySlug(slug: string): Trip {
     source: data.source,
     sections: splitIntoSections(contentHtml),
     track: getTrackForSlug(slug),
+    dayTracks: getDayTracksForSlug(slug),
   };
 }
 

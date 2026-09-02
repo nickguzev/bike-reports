@@ -48,10 +48,11 @@ export default async function TripPage({
           <p className="empty-state">Отчёт об этой поездке ещё готовится.</p>
         ) : (
           <>
-            {(trip.track || trip.route?.length) ? (
+            {(trip.track || trip.dayTracks || trip.route?.length) ? (
               <div className="route-map">
                 <RouteMap
                   track={trip.track}
+                  dayTracks={trip.dayTracks}
                   waypointCount={trip.route.length}
                   stopMarker={trip.overnightStop}
                 />

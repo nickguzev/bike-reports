@@ -18,3 +18,12 @@ export function getTrackForSlug(slug: string): TrackPoint[] | null {
   }
   return points.length > 1 ? points : null;
 }
+
+/** Multi-day track: content/tracks/<slug>.json = TrackPoint[][], one array per day. */
+export function getDayTracksForSlug(slug: string): TrackPoint[][] | null {
+  const filePath = path.join(TRACKS_DIR, `${slug}.json`);
+  if (!fs.existsSync(filePath)) return null;
+  const raw = fs.readFileSync(filePath, "utf-8");
+  const days = JSON.parse(raw) as TrackPoint[][];
+  return Array.isArray(days) && days.length > 0 ? days : null;
+}
