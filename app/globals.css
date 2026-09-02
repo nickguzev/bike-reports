@@ -387,6 +387,51 @@ a {
   margin: 0.5rem 0 1.75rem;
 }
 
+.interactive-map {
+  width: 100%;
+  height: 320px;
+  border: 1px solid var(--line);
+  background: var(--paper-dim);
+  transition: opacity 0.3s ease;
+}
+
+.interactive-map--tall {
+  height: 420px;
+}
+
+.all-tracks-map {
+  margin: 1.5rem 0 2rem;
+}
+
+.all-tracks-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 0.75rem;
+  max-height: 8rem;
+  overflow-y: auto;
+}
+
+.all-tracks-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.all-tracks-legend__item:hover {
+  color: var(--route);
+}
+
+.all-tracks-legend__swatch {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
 .route-map__caption {
   display: inline-block;
   margin-top: 0.5rem;

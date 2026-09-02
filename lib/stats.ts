@@ -1,5 +1,7 @@
 import { getAllTrips, type Trip } from "@/lib/trips";
 import { getAllPeople } from "@/lib/people";
+import { getTrackForSlug, getDayTracksForSlug, type TrackPoint } from "@/lib/gpx";
+import type { TripTrack } from "@/components/AllTracksMap";
 
 export function getSiteStats() {
   const trips = getAllTrips();
@@ -49,5 +51,48 @@ export function getTripRankings() {
     .filter((x) => x.count > 0)
     .sort((a, b) => b.count - a.count);
 
-  return { byDuration, byDistance, byAvgKmPerDay, byCountries };
+  const byParticipants = trips
+    .filter((t) => t.participants.length > 0)
+    .sort((a, b) => b.participants.length - a.participants.length);
+
+  return { byDuration, byDistance, byAvgKmPerDay, byCountries, byParticipants };
+}
+
+/** Flattened single-line tracks for every trip that has real GPS data, for the overview map. */
+export function getAllTripTracks(): TripTrack[] {
+  const trips = getAllTrips().filter((t) => !t.placeholder);
+  const result: TripTrack[] = [];
+
+  for (const t of trips) {
+    const dayTracks = getDayTracksForSlug(t.slug);
+    const single = getTrackForSlug(t.slug);
+    let points: TrackPoint[] = [];
+
+    if (dayTracks) {
+      points = dayTracks.flat(2);
+    } else if (single) {
+      points = single;
+    }
+
+    if (points.length > 1) {
+      result.push({ slug: t.slug, title: t.title, year: t.year, points });
+    }
+  }
+
+  return result;
+}
+
+/** One point per riding day across every trip, in chronological order, for a "is the average daily distance trending up?" chart. */
+export function getDailyKmTrend(): { label: string; km: number }[] {
+  const trips = [...getAllTrips()]
+    .filter((t) => !t.placeholder && t.dailyKm?.length)
+    .sort((a, b) => a.year - b.year || (a.order ?? 0) - (b.order ?? 0));
+
+  const points: { label: string; km: number }[] = [];
+  for (const t of trips) {
+    t.dailyKm.forEach((km, i) => {
+      points.push({ label: `${t.year}·${i + 1}`, km });
+    });
+  }
+  return points;
 }

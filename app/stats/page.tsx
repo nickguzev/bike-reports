@@ -1,10 +1,14 @@
 import Link from "next/link";
-import { getSiteStats, getTripRankings } from "@/lib/stats";
+import { getSiteStats, getTripRankings, getAllTripTracks, getDailyKmTrend } from "@/lib/stats";
 import { getAllPeople } from "@/lib/people";
+import AllTracksMap from "@/components/AllTracksMap";
+import KmTrendChart from "@/components/KmTrendChart";
 
 export default function StatsPage() {
   const stats = getSiteStats();
   const rankings = getTripRankings();
+  const tracks = getAllTripTracks();
+  const trend = getDailyKmTrend();
   const people = getAllPeople().sort(
     (a, b) => b.tripCount - a.tripCount || b.totalKm - a.totalKm
   );
@@ -18,10 +22,11 @@ export default function StatsPage() {
       <div className="trip-hero">
         <h1 className="trip-hero__title">Карта и статистика</h1>
         <p className="trip-hero__subtitle">
-          Общая карта со всеми треками появится здесь позже. Пока — разбивка по
-          участникам.
+          Все треки на одной карте и разбивка по поездкам и участникам.
         </p>
       </div>
+
+      <AllTracksMap tracks={tracks} />
 
       <div className="stat-strip">
         <div className="stat">
@@ -78,7 +83,18 @@ export default function StatsPage() {
             value: `${count}`,
           }))}
         />
+        <RankingBlock
+          title="По числу участников"
+          items={rankings.byParticipants.slice(0, 5).map((t) => ({
+            slug: t.slug,
+            label: t.title,
+            value: `${t.participants.length}`,
+          }))}
+        />
       </div>
+
+      <h2 className="section-title">Километраж по дням</h2>
+      <KmTrendChart points={trend} />
 
       <h2 className="section-title">Участники</h2>
       <div className="person-list">
@@ -94,11 +110,6 @@ export default function StatsPage() {
           </Link>
         ))}
       </div>
-
-      <p className="empty-state">
-        Общая карта маршрутов и разбивка по дням появятся здесь по мере наполнения
-        архива.
-      </p>
     </div>
   );
 }

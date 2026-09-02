@@ -3,7 +3,7 @@ import Script from "next/script";
 import { notFound } from "next/navigation";
 import { getAllSlugs, getTripBySlug, getAdjacentTrips } from "@/lib/trips";
 import DailyKmChart from "@/components/DailyKmChart";
-import RouteMap from "@/components/RouteMap";
+import InteractiveMap from "@/components/InteractiveMap";
 import AuthorBlock from "@/components/AuthorBlock";
 import ParticipantsLine from "@/components/ParticipantsLine";
 import TripPager from "@/components/TripPager";
@@ -51,7 +51,7 @@ export default async function TripPage({
           <>
             {(trip.track || trip.dayTracks || trip.route?.length) ? (
               <div className="route-map">
-                <RouteMap
+                <InteractiveMap
                   track={trip.track}
                   dayTracks={trip.dayTracks}
                   waypointCount={trip.route.length}
