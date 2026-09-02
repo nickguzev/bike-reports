@@ -6,6 +6,7 @@ country: "Эстония · Россия"
 dates: "6–9 мая 2017"
 days: 4
 distanceKm: 319
+elevationM: 1102
 participants:
   - "Паша П"
   - "Коля"

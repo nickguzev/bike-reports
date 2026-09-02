@@ -6,6 +6,7 @@ country: "Россия"
 dates: "29–30 августа 2015"
 days: 2
 distanceKm: 175
+elevationM: 934
 participants:
   - "Кирилл"
   - "Паша К"

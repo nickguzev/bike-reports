@@ -6,6 +6,7 @@ country: "Черногория · Хорватия · Босния · Итали
 dates: "1–9 мая 2016"
 days: 9
 distanceKm: 641
+elevationM: 4401
 participants:
   - "Женёк"
   - "Коля"
