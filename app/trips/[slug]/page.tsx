@@ -26,7 +26,6 @@ export default async function TripPage({
   if (!trip) notFound();
 
   const { prev, next } = getAdjacentTrips(slug);
-  const hasReport = !trip.placeholder;
 
   return (
     <div className="wrap">
@@ -45,23 +44,29 @@ export default async function TripPage({
           {trip.dates && <p className="trip-hero__dates">{trip.dates}</p>}
         </div>
 
-        {!hasReport ? (
+        {!trip.placeholder && !trip.route?.length && !trip.track && !trip.distanceKm ? (
           <p className="empty-state">Отчёт об этой поездке ещё готовится.</p>
         ) : (
           <>
-            <div className="route-map">
-              <RouteMap track={trip.track} waypointCount={trip.route.length} />
-              {trip.gpxUrl && (
-                <a
-                  href={trip.gpxUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="route-map__caption"
-                >
-                  GPX-трек ↗
-                </a>
-              )}
-            </div>
+            {(trip.track || trip.route?.length) ? (
+              <div className="route-map">
+                <RouteMap
+                  track={trip.track}
+                  waypointCount={trip.route.length}
+                  stopMarker={trip.overnightStop}
+                />
+                {trip.gpxUrl && (
+                  <a
+                    href={trip.gpxUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="route-map__caption"
+                  >
+                    GPX-трек ↗
+                  </a>
+                )}
+              </div>
+            ) : null}
 
             <div className="stat-strip">
               {typeof trip.distanceKm === "number" && (
@@ -76,9 +81,9 @@ export default async function TripPage({
                   <span className="stat__label">метров набора</span>
                 </div>
               ) : null}
-              {trip.dailyKm?.length ? (
+              {trip.days ?? trip.dailyKm?.length ? (
                 <div className="stat">
-                  <span className="stat__value">{trip.dailyKm.length}</span>
+                  <span className="stat__value">{trip.days ?? trip.dailyKm.length}</span>
                   <span className="stat__label">ходовых дней</span>
                 </div>
               ) : null}
@@ -116,14 +121,18 @@ export default async function TripPage({
 
             <ParticipantsLine names={trip.participants} count={trip.participantCount} />
 
-            <div className="trip-body">
-              {trip.sections.map((section, i) => (
-                <div key={i} className="trip-section">
-                  <AuthorBlock authorSlug={section.authorSlug} />
-                  <div dangerouslySetInnerHTML={{ __html: section.html }} />
-                </div>
-              ))}
-            </div>
+            {trip.placeholder ? (
+              <p className="empty-state">Текст отчёта в процессе — участники дописывают воспоминания.</p>
+            ) : (
+              <div className="trip-body">
+                {trip.sections.map((section, i) => (
+                  <div key={i} className="trip-section">
+                    <AuthorBlock authorSlug={section.authorSlug} />
+                    <div dangerouslySetInnerHTML={{ __html: section.html }} />
+                  </div>
+                ))}
+              </div>
+            )}
           </>
         )}
       </article>

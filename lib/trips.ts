@@ -30,6 +30,7 @@ export type Trip = {
   participants: string[];
   participantCount?: number;
   route: string[];
+  overnightStop?: { lat: number; lon: number; label?: string };
   dailyKm: number[];
   gpxUrl?: string;
   source?: string;
@@ -93,6 +94,7 @@ export function getTripBySlug(slug: string): Trip {
     participants: data.participants ?? [],
     participantCount: data.participantCount,
     route: data.route ?? [],
+    overnightStop: data.overnightStop,
     dailyKm: data.dailyKm ?? [],
     gpxUrl: data.gpxUrl,
     source: data.source,
