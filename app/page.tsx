@@ -48,7 +48,7 @@ export default function Home() {
                   <span className="trip-row__meta">{trip.country}</span>
                 </span>
                 {trip.placeholder ? (
-                  <span className="trip-row__soon">скоро</span>
+                  <span className="trip-row__soon">скоро анонсируем</span>
                 ) : (
                   <span className="trip-row__stats">{statBits(trip)}</span>
                 )}
