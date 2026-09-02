@@ -5,8 +5,8 @@ year: 2022
 country: "Турция"
 dates: "28 апреля – 3 мая 2022"
 days: 6
-distanceKm: 428
-elevationM: 5265
+distanceKm: 445
+elevationM: 3984
 participants:
   - "Кирилл"
   - "Коля"
