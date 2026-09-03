@@ -7,6 +7,13 @@ dates: "28 апреля – 3 мая 2022"
 days: 6
 distanceKm: 445
 elevationM: 3984
+dailyKm:
+  - 73.9
+  - 71.2
+  - 66.4
+  - 86.6
+  - 69.2
+  - 77.7
 participants:
   - "Кирилл"
   - "Коля"

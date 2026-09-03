@@ -7,6 +7,11 @@ dates: "6–9 мая 2017"
 days: 4
 distanceKm: 319
 elevationM: 1102
+dailyKm:
+  - 28.6
+  - 94.3
+  - 121.7
+  - 74.3
 participants:
   - "Паша П"
   - "Коля"

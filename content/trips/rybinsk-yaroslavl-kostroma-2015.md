@@ -7,6 +7,9 @@ dates: "29–30 августа 2015"
 days: 2
 distanceKm: 175
 elevationM: 934
+dailyKm:
+  - 112.4
+  - 62.3
 participants:
   - "Кирилл"
   - "Паша К"
