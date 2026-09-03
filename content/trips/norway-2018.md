@@ -5,7 +5,8 @@ year: 2018
 country: "Норвегия"
 dates: "20–29 июля 2018"
 days: 9
-distanceKm: 677
+distanceKm: 49
+elevationM: 502
 participants:
   - "Кирилл"
   - "Паша К"

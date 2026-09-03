@@ -62,15 +62,16 @@ export default async function TripPage({
           {trip.dates && <p className="trip-hero__dates">{trip.dates}</p>}
         </div>
 
-        {trip.placeholder && !trip.route?.length && !trip.track && !trip.dayTracks && !trip.distanceKm && trip.sections.every((s) => !s.html.trim()) ? (
+        {trip.placeholder && !trip.route?.length && !trip.track && !trip.dayTracks && !trip.categorizedTrack && !trip.distanceKm && trip.sections.every((s) => !s.html.trim()) ? (
           <p className="empty-state">Отчёт об этой поездке ещё готовится.</p>
         ) : (
           <>
-            {(trip.track || trip.dayTracks || trip.route?.length) ? (
+            {(trip.track || trip.dayTracks || trip.categorizedTrack || trip.route?.length) ? (
               <div className="route-map">
                 <InteractiveMap
                   track={trip.track}
                   dayTracks={trip.dayTracks}
+                  categorizedTrack={trip.categorizedTrack}
                   waypointCount={trip.route.length}
                   stopMarker={trip.overnightStop}
                   geo={trip.geo}

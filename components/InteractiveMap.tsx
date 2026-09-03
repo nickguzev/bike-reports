@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { setOptions, importLibrary } from "@googlemaps/js-api-loader";
-import type { TrackPoint } from "@/lib/gpx";
-import RouteMap from "@/components/RouteMap";
+import type { TrackPoint, CategorizedSegment } from "@/lib/gpx";
+import RouteMap, { CATEGORY_COLORS, CATEGORY_LABELS } from "@/components/RouteMap";
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 const DAY_COLORS = ["#c1501b", "#445c3c", "#7c8570", "#8a4b2e", "#5c6b45"];
@@ -24,11 +24,20 @@ const PAPER_STYLE: google.maps.MapTypeStyle[] = [
   { featureType: "water", elementType: "geometry", stylers: [{ color: "#c9d6cd" }] },
 ];
 
+// Google Maps needs real hex colors, not our CSS custom properties.
+const CATEGORY_HEX: Record<CategorizedSegment["category"], string> = {
+  cycling: "#c1501b",
+  hiking: "#445c3c",
+  walk: "#a8875a",
+  transport: "#7c8570",
+};
+
 type StopMarker = { lat: number; lon: number; label?: string };
 
 type Props = {
   dayTracks?: TrackPoint[][][] | null;
   track?: TrackPoint[] | null;
+  categorizedTrack?: CategorizedSegment[] | null;
   stopMarker?: StopMarker;
   waypointCount?: number;
   geo?: React.ComponentProps<typeof RouteMap>["geo"];
@@ -37,6 +46,7 @@ type Props = {
 export default function InteractiveMap({
   dayTracks,
   track,
+  categorizedTrack,
   stopMarker,
   waypointCount = 0,
   geo,
@@ -49,12 +59,13 @@ export default function InteractiveMap({
   useEffect(() => {
     if (!API_KEY || !mapRef.current) return;
 
+    const hasCategorized = categorizedTrack && categorizedTrack.length > 0;
     const days: TrackPoint[][][] = dayTracks?.length
       ? dayTracks
       : track && track.length > 1
       ? [[track]]
       : [];
-    if (days.length === 0) {
+    if (!hasCategorized && days.length === 0) {
       setStatus("error");
       return;
     }
@@ -77,50 +88,74 @@ export default function InteractiveMap({
 
         const bounds = new google.maps.LatLngBounds();
 
-        days.forEach((segments, dayIndex) => {
-          const color = DAY_COLORS[dayIndex % DAY_COLORS.length];
-          segments.forEach((seg) => {
-            const path = seg.map((p) => ({ lat: p.lat, lng: p.lon }));
+        if (hasCategorized) {
+          categorizedTrack!.forEach((seg) => {
+            const path = seg.points.map((p) => ({ lat: p.lat, lng: p.lon }));
+            const isTransport = seg.category === "transport";
             new google.maps.Polyline({
               path,
-              strokeColor: color,
-              strokeOpacity: 0.9,
-              strokeWeight: 3,
+              strokeColor: CATEGORY_HEX[seg.category],
+              strokeOpacity: isTransport ? 0.55 : 0.9,
+              strokeWeight: isTransport ? 2 : 3,
+              icons: isTransport
+                ? [
+                    {
+                      icon: { path: "M 0,-1 0,1", strokeOpacity: 0.6, scale: 3 },
+                      offset: "0",
+                      repeat: "14px",
+                    },
+                  ]
+                : undefined,
               map,
             });
             path.forEach((p) => bounds.extend(p));
           });
-        });
+        } else {
+          days.forEach((segments, dayIndex) => {
+            const color = DAY_COLORS[dayIndex % DAY_COLORS.length];
+            segments.forEach((seg) => {
+              const path = seg.map((p) => ({ lat: p.lat, lng: p.lon }));
+              new google.maps.Polyline({
+                path,
+                strokeColor: color,
+                strokeOpacity: 0.9,
+                strokeWeight: 3,
+                map,
+              });
+              path.forEach((p) => bounds.extend(p));
+            });
+          });
 
-        const firstPoint = days[0][0][0];
-        const lastDaySegments = days[days.length - 1];
-        const lastSeg = lastDaySegments[lastDaySegments.length - 1];
-        const lastPoint = lastSeg[lastSeg.length - 1];
+          const firstPoint = days[0][0][0];
+          const lastDaySegments = days[days.length - 1];
+          const lastSeg = lastDaySegments[lastDaySegments.length - 1];
+          const lastPoint = lastSeg[lastSeg.length - 1];
 
-        new google.maps.Marker({
-          position: { lat: firstPoint.lat, lng: firstPoint.lon },
-          map,
-          label: { text: "1", color: "#ece7d8", fontSize: "11px", fontWeight: "700" },
-          icon: {
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: 9,
-            fillColor: "#212f1f",
-            fillOpacity: 1,
-            strokeWeight: 0,
-          },
-        });
-        new google.maps.Marker({
-          position: { lat: lastPoint.lat, lng: lastPoint.lon },
-          map,
-          icon: {
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: 8,
-            fillColor: "#ece7d8",
-            fillOpacity: 1,
-            strokeColor: "#212f1f",
-            strokeWeight: 2,
-          },
-        });
+          new google.maps.Marker({
+            position: { lat: firstPoint.lat, lng: firstPoint.lon },
+            map,
+            label: { text: "1", color: "#ece7d8", fontSize: "11px", fontWeight: "700" },
+            icon: {
+              path: google.maps.SymbolPath.CIRCLE,
+              scale: 9,
+              fillColor: "#212f1f",
+              fillOpacity: 1,
+              strokeWeight: 0,
+            },
+          });
+          new google.maps.Marker({
+            position: { lat: lastPoint.lat, lng: lastPoint.lon },
+            map,
+            icon: {
+              path: google.maps.SymbolPath.CIRCLE,
+              scale: 8,
+              fillColor: "#ece7d8",
+              fillOpacity: 1,
+              strokeColor: "#212f1f",
+              strokeWeight: 2,
+            },
+          });
+        }
 
         if (stopMarker) {
           new google.maps.Marker({
@@ -147,16 +182,47 @@ export default function InteractiveMap({
   }, []);
 
   if (status === "error") {
-    return <RouteMap track={track ?? null} dayTracks={dayTracks} waypointCount={waypointCount} stopMarker={stopMarker} geo={geo} />;
+    return (
+      <RouteMap
+        track={track ?? null}
+        dayTracks={dayTracks}
+        categorizedTrack={categorizedTrack}
+        waypointCount={waypointCount}
+        stopMarker={stopMarker}
+        geo={geo}
+      />
+    );
   }
 
+  const usedCategories = categorizedTrack
+    ? [...new Set(categorizedTrack.map((s) => s.category))]
+    : [];
+
   return (
-    <div
-      ref={mapRef}
-      className="interactive-map"
-      style={{ opacity: status === "ready" ? 1 : 0 }}
-      role="img"
-      aria-label="Интерактивная карта трека"
-    />
+    <div>
+      <div
+        ref={mapRef}
+        className="interactive-map"
+        style={{ opacity: status === "ready" ? 1 : 0 }}
+        role="img"
+        aria-label="Интерактивная карта трека"
+      />
+      {usedCategories.length > 0 && (
+        <div className="track-legend">
+          {usedCategories.map((cat) => (
+            <span key={cat} className="track-legend__item">
+              <span
+                className="track-legend__swatch"
+                style={{
+                  borderColor: CATEGORY_COLORS[cat],
+                  borderStyle: cat === "transport" ? "dashed" : "solid",
+                }}
+              />
+              {CATEGORY_LABELS[cat]}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

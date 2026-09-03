@@ -30,6 +30,31 @@ export function getDayTracksForSlug(slug: string): TrackPoint[][][] | null {
   const filePath = path.join(TRACKS_DIR, `${slug}.json`);
   if (!fs.existsSync(filePath)) return null;
   const raw = fs.readFileSync(filePath, "utf-8");
-  const days = JSON.parse(raw) as TrackPoint[][][];
-  return Array.isArray(days) && days.length > 0 ? days : null;
+  const parsed = JSON.parse(raw);
+  if (!Array.isArray(parsed) || parsed.length === 0) return null;
+  // categorized-format files are a flat array of {category, points} objects, not day arrays
+  if ("category" in (parsed[0] ?? {})) return null;
+  return parsed as TrackPoint[][][];
+}
+
+export type CategorizedSegment = {
+  category: "cycling" | "hiking" | "walk" | "transport";
+  label: string;
+  points: TrackPoint[];
+};
+
+/**
+ * Mixed-mode track: content/tracks/<slug>.json — for trips that combine
+ * real cycling with hiking side-trips, ferries, or other transport. Only
+ * "cycling" segments should count toward distance/elevation stats;
+ * everything else is shown on the map but excluded from the numbers.
+ */
+export function getCategorizedTrackForSlug(slug: string): CategorizedSegment[] | null {
+  const filePath = path.join(TRACKS_DIR, `${slug}.json`);
+  if (!fs.existsSync(filePath)) return null;
+  const raw = fs.readFileSync(filePath, "utf-8");
+  const parsed = JSON.parse(raw);
+  if (!Array.isArray(parsed) || parsed.length === 0) return null;
+  if (!("category" in (parsed[0] ?? {}))) return null;
+  return parsed as CategorizedSegment[];
 }

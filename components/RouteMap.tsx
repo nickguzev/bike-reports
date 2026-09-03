@@ -1,4 +1,4 @@
-import type { TrackPoint } from "@/lib/gpx";
+import type { TrackPoint, CategorizedSegment } from "@/lib/gpx";
 
 type StopMarker = { lat: number; lon: number; label?: string };
 type CityMarker = { lat: number; lon: number; name: string };
@@ -12,6 +12,7 @@ type GeoBackdrop = {
 type Props = {
   track: TrackPoint[] | null;
   dayTracks?: TrackPoint[][][] | null;
+  categorizedTrack?: CategorizedSegment[] | null;
   waypointCount: number;
   stopMarker?: StopMarker;
   geo?: GeoBackdrop;
@@ -23,7 +24,24 @@ const PAD = 30;
 
 const DAY_TONES = ["var(--route)", "var(--moss)"];
 
-export default function RouteMap({ track, dayTracks, waypointCount, stopMarker, geo }: Props) {
+export const CATEGORY_COLORS: Record<CategorizedSegment["category"], string> = {
+  cycling: "var(--route)",
+  hiking: "var(--moss)",
+  walk: "#a8875a",
+  transport: "var(--ink-faint)",
+};
+
+export const CATEGORY_LABELS: Record<CategorizedSegment["category"], string> = {
+  cycling: "На велосипеде",
+  hiking: "Пешком в горах",
+  walk: "Прогулка по городу",
+  transport: "Паром / переезд",
+};
+
+export default function RouteMap({ track, dayTracks, categorizedTrack, waypointCount, stopMarker, geo }: Props) {
+  if (categorizedTrack && categorizedTrack.length > 0) {
+    return <CategorizedTrack segments={categorizedTrack} stopMarker={stopMarker} geo={geo} />;
+  }
   if (dayTracks && dayTracks.length > 0) {
     return <MultiDayTrack days={dayTracks} stopMarker={stopMarker} geo={geo} />;
   }
@@ -190,6 +208,84 @@ function Graticule({
         );
       })}
     </g>
+  );
+}
+
+function CategorizedTrack({
+  segments,
+  stopMarker,
+  geo,
+}: {
+  segments: CategorizedSegment[];
+  stopMarker?: StopMarker;
+  geo?: GeoBackdrop;
+}) {
+  const all = segments.flatMap((s) => s.points).concat(geo?.coastPoints ?? []);
+  const b = bounds(all);
+  const { project } = makeProjector(b);
+  const stop = stopMarker ? project(stopMarker) : null;
+
+  const usedCategories = [...new Set(segments.map((s) => s.category))] as CategorizedSegment["category"][];
+
+  return (
+    <div>
+      <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ overflow: "hidden" }} role="img" aria-label="Карта поездки с разными видами передвижения">
+        <rect x={PAD} y={PAD} width={W - PAD * 2} height={H - PAD * 2} fill="var(--paper-dim)" opacity={0.5} />
+        <Graticule b={b} project={project} />
+        {geo && <GeoBackdropLayer geo={geo} b={b} project={project} />}
+
+        {segments.map((seg, i) => {
+          const d =
+            "M " +
+            seg.points
+              .map((p) => {
+                const q = project(p);
+                return `${q.x.toFixed(1)},${q.y.toFixed(1)}`;
+              })
+              .join(" L ");
+          const isTransport = seg.category === "transport";
+          return (
+            <path
+              key={i}
+              d={d}
+              fill="none"
+              stroke={CATEGORY_COLORS[seg.category]}
+              strokeWidth={isTransport ? 1.5 : 2.5}
+              strokeDasharray={isTransport ? "5 4" : undefined}
+              strokeLinejoin="round"
+              strokeLinecap="round"
+              opacity={isTransport ? 0.6 : 0.95}
+            />
+          );
+        })}
+
+        {stop && (
+          <g>
+            <circle cx={stop.x} cy={stop.y} r={5} fill="var(--paper)" stroke="var(--ink)" strokeWidth={2} />
+            {stopMarker?.label && (
+              <text x={stop.x} y={stop.y - 10} textAnchor="middle" fontSize="9.5" fontFamily="var(--font-display)" fontWeight={700} fill="var(--ink)">
+                {stopMarker.label}
+              </text>
+            )}
+          </g>
+        )}
+      </svg>
+      <div className="track-legend">
+        {usedCategories.map((cat) => (
+          <span key={cat} className="track-legend__item">
+            <span
+              className="track-legend__swatch"
+              style={{
+                background: cat === "transport" ? "transparent" : CATEGORY_COLORS[cat],
+                borderColor: CATEGORY_COLORS[cat],
+                borderStyle: cat === "transport" ? "dashed" : "solid",
+              }}
+            />
+            {CATEGORY_LABELS[cat]}
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }
 
