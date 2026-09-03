@@ -4,9 +4,15 @@ subtitle: "Из Флоренции в Ментон"
 year: 2023
 country: "Италия · Франция"
 dates: "27 апреля – 2 мая 2023"
-days: 6
-distanceKm: 524
-elevationM: 4000
+days: 5
+distanceKm: 512
+elevationM: 3054
+dailyKm:
+  - 104.3
+  - 99.9
+  - 90.5
+  - 103.8
+  - 113.8
 participants:
   - "Паша П"
   - "Паша К"

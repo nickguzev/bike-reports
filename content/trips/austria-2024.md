@@ -5,8 +5,13 @@ year: 2024
 country: "Австрия"
 dates: "8–11 июня 2024"
 days: 4
-distanceKm: 411
-elevationM: 1300
+distanceKm: 393
+elevationM: 539
+dailyKm:
+  - 106.8
+  - 108.9
+  - 111.9
+  - 65.3
 participants:
   - "Кирилл"
   - "Паша К"
