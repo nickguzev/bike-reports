@@ -5,7 +5,14 @@ year: 2019
 country: "Россия"
 dates: "1–6 мая 2019"
 days: 5
-distanceKm: 491
+distanceKm: 526
+elevationM: 682
+dailyKm:
+  - 151.3
+  - 94.7
+  - 101.7
+  - 105.0
+  - 73.1
 participants:
   - "Кирилл"
   - "Паша К"
