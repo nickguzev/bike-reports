@@ -5,8 +5,14 @@ year: 2010
 country: "Австрия · Словакия · Венгрия"
 dates: "август 2010"
 days: 6
-distanceKm: 85
-elevationM: 54
+distanceKm: 158
+elevationM: 102
+dailyKm:
+  - 27.2
+  - 20.9
+  - 61.2
+  - 31.4
+  - 16.9
 participants:
   - "Руслан"
   - "Кирилл"
