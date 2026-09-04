@@ -4,6 +4,9 @@ subtitle: "Австрия — Словакия — Венгрия"
 year: 2010
 country: "Австрия · Словакия · Венгрия"
 dates: "август 2010"
+days: 6
+distanceKm: 85
+elevationM: 54
 participants:
   - "Руслан"
   - "Кирилл"

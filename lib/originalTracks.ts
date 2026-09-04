@@ -11,6 +11,9 @@ const DIR = path.join(process.cwd(), "public", "original-tracks");
 
 // slug -> [{ label, filename }] — filename is relative to public/original-tracks/<slug>/
 const MANIFEST: Record<string, { label: string; filename: string }[]> = {
+  "austria-slovakia-hungary-2010": [
+    { label: "Полный экспорт (13 сегментов, дни 1/3/4/5)", filename: "full-export.kml" },
+  ],
   "england-2025": [
     { label: "День 1", filename: "day-1.gpx" },
     { label: "День 2", filename: "day-2.gpx" },
