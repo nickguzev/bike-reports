@@ -263,6 +263,64 @@ a {
   flex-shrink: 0;
 }
 
+.tracks-archive {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin: 1.5rem 0 3rem;
+}
+
+.tracks-archive__trip-header {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.tracks-archive__trip-title {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.tracks-archive__trip-title:hover {
+  color: var(--route);
+}
+
+.tracks-archive__file-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tracks-archive__file-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.tracks-archive__file-list a {
+  color: var(--route);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.tracks-archive__file-list a:hover {
+  text-decoration: underline;
+}
+
+.tracks-archive__file-meta {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
 .person-list {
   border-top: 1px solid var(--line);
 }

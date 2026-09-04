@@ -30,6 +30,10 @@ export default function Home() {
       <Link href="/people" className="home-stats-link">
         Единовеломышленники →
       </Link>
+      <br />
+      <Link href="/tracks" className="home-stats-link">
+        Архив треков →
+      </Link>
 
       <main>
         {trips.length === 0 ? (
