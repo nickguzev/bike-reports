@@ -61,6 +61,10 @@ function splitIntoSections(html: string): TripSection[] {
   if (matches.length === 0) return [{ html }];
 
   const sections: TripSection[] = [];
+  const leading = html.slice(0, matches[0].index!).trim();
+  if (leading) {
+    sections.push({ html: leading });
+  }
   for (let i = 0; i < matches.length; i++) {
     const start = matches[i].index! + matches[i][0].length;
     const end = i + 1 < matches.length ? matches[i + 1].index! : html.length;
