@@ -76,6 +76,15 @@ export default async function TripPage({
                   stopMarker={trip.overnightStop}
                   geo={trip.geo}
                 />
+                {(trip.track || trip.dayTracks || trip.categorizedTrack) && (
+                  <a
+                    href={`/tracks/${trip.slug}.gpx`}
+                    download
+                    className="route-map__caption"
+                  >
+                    Скачать трек (GPX) ↓
+                  </a>
+                )}
                 {trip.gpxUrl && (
                   <a
                     href={trip.gpxUrl}
@@ -83,7 +92,7 @@ export default async function TripPage({
                     rel="noopener noreferrer"
                     className="route-map__caption"
                   >
-                    GPX-трек ↗
+                    Источник трека ↗
                   </a>
                 )}
               </div>
