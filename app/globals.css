@@ -481,6 +481,15 @@ a {
   max-width: var(--measure);
 }
 
+.trip-hero__route {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  color: var(--route);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  margin: 0.5rem 0 0;
+}
+
 .trip-hero__dates {
   font-size: 0.85rem;
   color: var(--ink-faint);

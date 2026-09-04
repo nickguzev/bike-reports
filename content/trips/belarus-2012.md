@@ -4,6 +4,7 @@ subtitle: "5 улиток, 3 доширака, 120 км на велах"
 year: 2012
 order: 2
 country: "Белоруссия"
+routeSummary: "Витебск → Орша"
 dates: "август 2012"
 days: 2
 distanceKm: 120

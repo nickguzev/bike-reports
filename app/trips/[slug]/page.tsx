@@ -59,6 +59,7 @@ export default async function TripPage({
           {trip.country && <p className="trip-hero__country">{trip.country}</p>}
           <h1 className="trip-hero__title">{trip.title}</h1>
           {trip.subtitle && <p className="trip-hero__subtitle">{trip.subtitle}</p>}
+          {trip.routeSummary && <p className="trip-hero__route">{trip.routeSummary}</p>}
           {trip.dates && <p className="trip-hero__dates">{trip.dates}</p>}
         </div>
 

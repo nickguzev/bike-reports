@@ -3,6 +3,7 @@ title: "Вдоль Дуная"
 subtitle: "Вена — Зальцбург. Реки, ликёры и БАШНЯ"
 year: 2024
 country: "Австрия"
+routeSummary: "Вена → Линц → Зальцбург"
 dates: "8–11 июня 2024"
 days: 4
 distanceKm: 393

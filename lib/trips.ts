@@ -17,6 +17,7 @@ export type Trip = {
   slug: string;
   title: string;
   subtitle?: string;
+  routeSummary?: string;
   year: number;
   order?: number;
   country: string;
@@ -101,6 +102,7 @@ export function getTripBySlug(slug: string): Trip {
     slug,
     title: data.title,
     subtitle: data.subtitle,
+    routeSummary: data.routeSummary,
     year: data.year,
     order: data.order,
     country: data.country,

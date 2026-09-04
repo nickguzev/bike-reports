@@ -49,7 +49,7 @@ export default function Home() {
                 <span className="trip-row__year">{trip.year}</span>
                 <span>
                   <span className="trip-row__title">{trip.title}</span>
-                  <span className="trip-row__meta">{trip.country}</span>
+                  <span className="trip-row__meta">{trip.routeSummary || trip.country}</span>
                 </span>
                 {trip.placeholder ? (
                   <span className="trip-row__soon">скоро анонсируем</span>
