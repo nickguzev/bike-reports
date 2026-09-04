@@ -5,8 +5,8 @@ year: 2016
 country: "Черногория · Хорватия · Босния · Италия · Сан-Марино"
 dates: "1–9 мая 2016"
 days: 9
-distanceKm: 641
-elevationM: 4401
+distanceKm: 649
+elevationM: 5537
 participants:
   - "Женёк"
   - "Коля"

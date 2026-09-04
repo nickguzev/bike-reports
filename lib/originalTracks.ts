@@ -28,6 +28,7 @@ const MANIFEST: Record<string, { label: string; filename: string }[]> = {
   "belarus-2012": [{ label: "Витебск — Орша", filename: "route.gpx" }],
   "montenegro-italy-2016": [
     { label: "Дни 1–9 (единый файл)", filename: "all-days.kmz" },
+    { label: "День 4 полностью (восстановлен через AllTrails, CSV)", filename: "day-4-full.csv" },
   ],
   "norway-2018": [
     { label: "Полный экспорт из Google My Maps (с цветовой разметкой)", filename: "all-segments.kml" },
