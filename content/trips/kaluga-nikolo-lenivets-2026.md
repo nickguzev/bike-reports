@@ -24,6 +24,7 @@ overnightStop:
   lat: 54.762955
   lon: 35.599464
   label: "Ночёвка: Николо-Ленивец"
+gpxUrl: "/tracks/kaluga-nikolo-lenivets-2026.gpx"
 ---
 
 <!-- author: oleg-k -->
