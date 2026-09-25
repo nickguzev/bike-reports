@@ -90,6 +90,39 @@ export function getTripBySlug(slug: string): Trip {
       `<img src="${url}" alt="" loading="lazy" class="trip-photo" />`
   );
 
+  // Gallery markers (<!-- gallery: url1, url2, ... -->) render a grid of
+  // thumbnails; they are regular .trip-photo images, so the lightbox works.
+  contentHtml = contentHtml.replace(/<!--\s*gallery:\s*([\s\S]*?)-->/g, (_match, list: string) => {
+    const imgs = list
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .map((url) => `<img src="${url}" alt="" loading="lazy" class="trip-photo trip-gallery__img" />`)
+      .join("");
+    return `<div class="trip-gallery">${imgs}</div>`;
+  });
+
+  // Short self-hosted clips (<!-- clips: /videos/a.mp4, /videos/b.mp4 -->),
+  // poster = same path with .jpg.
+  contentHtml = contentHtml.replace(/<!--\s*clips:\s*([\s\S]*?)-->/g, (_match, list: string) => {
+    const vids = list
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .map(
+        (url) =>
+          `<video class="trip-clip" src="${url}" poster="${url.replace(/\.mp4$/, ".jpg")}" controls playsinline preload="none"></video>`
+      )
+      .join("");
+    return `<div class="trip-clips">${vids}</div>`;
+  });
+
+  // External film link card (<!-- film: url | title | note -->).
+  contentHtml = contentHtml.replace(/<!--\s*film:\s*([\s\S]*?)-->/g, (_match, body: string) => {
+    const [url, title, note] = body.split("|").map((s) => s.trim());
+    return `<a class="trip-film" href="${url}" target="_blank" rel="noopener noreferrer"><span class="trip-film__play" aria-hidden="true">▶</span><span><span class="trip-film__title">${title ?? "Смотреть видео"}</span>${note ? `<span class="trip-film__note">${note}</span>` : ""}</span></a>`;
+  });
+
   // Video markers (<!-- video: instagram-url -->) render as Instagram's own
   // official embed widget (blockquote + their embed.js processes it client
   // side — see components loaded in the trip page). Not a reproduction of

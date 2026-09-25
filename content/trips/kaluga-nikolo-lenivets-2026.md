@@ -4,13 +4,13 @@ subtitle: "Промежность о дерево, погнутый ниппел
 year: 2026
 order: 3
 country: "Россия"
-routeSummary: "Калуга → Николо-Ленивец → Калуга"
+routeSummary: "Калуга → Никола-Ленивец → Калуга"
 dates: "19–20 сентября 2026"
 days: 2
-distanceKm: 149
+distanceKm: 152
 elevationM: 530
 dailyKm:
-  - 77.7
+  - 80.5
   - 71.5
 participants:
   - "Паша П"
@@ -18,12 +18,12 @@ participants:
   - "Олег К"
 route:
   - "Калуга"
-  - "Николо-Ленивец"
+  - "Никола-Ленивец"
   - "Калуга"
 overnightStop:
   lat: 54.762955
   lon: 35.599464
-  label: "Ночёвка: Николо-Ленивец"
+  label: "Ночёвка: Никола-Ленивец"
 ---
 
 <!-- author: oleg-k -->
@@ -40,8 +40,26 @@ overnightStop:
 
 На ужин не успели никуда... Обеда не было, ужина не было, были только перекусы. Вечером нас спасло, что у Паши в рюкзаке этот самый перекус оказался.
 
+<!-- photo: /images/kaluga-nikolo-lenivets-2026/d1-snacks.jpg -->
+
 Я был настолько уставшим, что не смог дождаться горячего чая, которого так хотелось, и лёг спать.
 
 Ночью испытывал сушняк от обезвоживания, но не нашёл сил встать попить воды.
 
+<!-- photo: /images/kaluga-nikolo-lenivets-2026/d1-stars.jpg -->
+
 Точка :)
+
+### Фото — день 1
+
+<!-- gallery: /images/kaluga-nikolo-lenivets-2026/d1-cafe.jpg, /images/kaluga-nikolo-lenivets-2026/d1-beer-slope.jpg, /images/kaluga-nikolo-lenivets-2026/d1-bikes-river.jpg -->
+
+### Фото — день 2
+
+<!-- gallery: /images/kaluga-nikolo-lenivets-2026/d2-houses.jpg, /images/kaluga-nikolo-lenivets-2026/d2-morning.jpg, /images/kaluga-nikolo-lenivets-2026/d2-art.jpg, /images/kaluga-nikolo-lenivets-2026/d2-beer.jpg, /images/kaluga-nikolo-lenivets-2026/d2-repair.jpg, /images/kaluga-nikolo-lenivets-2026/d2-sunset.jpg -->
+
+### Видео
+
+<!-- film: https://disk.yandex.ru/i/ybjW4_WdKFP4xw | Фильм Олега «БКТ велоуикенд» | смотреть на Яндекс Диске ↗ -->
+
+<!-- clips: /videos/kaluga-nikolo-lenivets-2026/field.mp4, /videos/kaluga-nikolo-lenivets-2026/bridge.mp4, /videos/kaluga-nikolo-lenivets-2026/veranda.mp4 -->
