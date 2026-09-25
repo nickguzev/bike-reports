@@ -9,7 +9,10 @@ export default function Home() {
     slug: trip.slug,
     year: trip.year,
     title: trip.title,
+    subtitle: trip.subtitle,
     meta: trip.routeSummary || trip.country,
+    dates: trip.dates,
+    cover: trip.cover,
     placeholder: trip.placeholder,
     distanceKm: trip.distanceKm,
     days: trip.days ?? (trip.dailyKm?.length || undefined),
@@ -18,16 +21,7 @@ export default function Home() {
   }));
 
   return (
-    <div className="wrap">
-      <a
-        href="https://moscross-nickguzev-2002s-projects.vercel.app"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="sibling-project-link"
-      >
-        Ещё один наш проект — Протыки Москвы →
-      </a>
-
+    <div className="wrap wrap--wide">
       <h1 className="home-title">
         <span className="home-title__main">Велотрипы</span>
         <span className="home-title__years">
@@ -35,17 +29,17 @@ export default function Home() {
         </span>
       </h1>
 
-      <Link href="/stats" className="home-stats-link">
-        Карта и статистика всех поездок →
-      </Link>
-      <br />
-      <Link href="/people" className="home-stats-link">
-        Единовеломышленники →
-      </Link>
-      <br />
-      <Link href="/tracks" className="home-stats-link">
-        Архив треков →
-      </Link>
+      <nav className="home-links" aria-label="Разделы">
+        <Link href="/stats" className="home-stats-link">
+          Карта и статистика всех поездок →
+        </Link>
+        <Link href="/people" className="home-stats-link">
+          Единовеломышленники →
+        </Link>
+        <Link href="/tracks" className="home-stats-link">
+          Архив треков →
+        </Link>
+      </nav>
 
       <main>
         {trips.length === 0 ? (
@@ -57,4 +51,3 @@ export default function Home() {
     </div>
   );
 }
-

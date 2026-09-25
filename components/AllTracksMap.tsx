@@ -8,18 +8,18 @@ import type { TrackPoint } from "@/lib/gpx";
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
 const PAPER_STYLE: google.maps.MapTypeStyle[] = [
-  { elementType: "geometry", stylers: [{ color: "#ece7d8" }] },
-  { elementType: "labels.text.fill", stylers: [{ color: "#7c8570" }] },
-  { elementType: "labels.text.stroke", stylers: [{ color: "#ece7d8" }] },
-  { featureType: "administrative", elementType: "labels.text.fill", stylers: [{ color: "#4c5744" }] },
-  { featureType: "administrative", elementType: "geometry", stylers: [{ color: "#c7bd9e" }] },
-  { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#ece7d8" }] },
+  { elementType: "geometry", stylers: [{ color: "#1d251b" }] },
+  { elementType: "labels.text.fill", stylers: [{ color: "#a39e8e" }] },
+  { elementType: "labels.text.stroke", stylers: [{ color: "#141a13" }] },
+  { featureType: "administrative", elementType: "labels.text.fill", stylers: [{ color: "#cfc8b4" }] },
+  { featureType: "administrative", elementType: "geometry", stylers: [{ color: "#3b4637" }] },
+  { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#1d251b" }] },
   { featureType: "poi", stylers: [{ visibility: "off" }] },
-  { featureType: "road", elementType: "geometry", stylers: [{ color: "#e1dac4" }] },
+  { featureType: "road", elementType: "geometry", stylers: [{ color: "#2c3629" }] },
   { featureType: "road", elementType: "labels", stylers: [{ visibility: "off" }] },
-  { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#d8cfae" }] },
+  { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#39452f" }] },
   { featureType: "transit", stylers: [{ visibility: "off" }] },
-  { featureType: "water", elementType: "geometry", stylers: [{ color: "#c9d6cd" }] },
+  { featureType: "water", elementType: "geometry", stylers: [{ color: "#0f1b1c" }] },
 ];
 
 export type TripTrack = {
@@ -31,7 +31,7 @@ export type TripTrack = {
 
 function colorForIndex(i: number, total: number): string {
   const hue = Math.round((i / Math.max(total, 1)) * 320); // avoid wrapping into near-duplicate reds
-  return `hsl(${hue}, 55%, 38%)`;
+  return `hsl(${hue}, 65%, 62%)`;
 }
 
 export default function AllTracksMap({ tracks }: { tracks: TripTrack[] }) {

@@ -23,11 +23,7 @@ export default function StatsPage() {
 
   return (
     <div className="wrap">
-      <Link href="/" className="trip-back">
-        ← Все поездки
-      </Link>
-
-      <div className="trip-hero">
+      <div className="trip-hero page-head">
         <h1 className="trip-hero__title">Карта и статистика</h1>
         <p className="trip-hero__subtitle">
           Все треки на одной карте и разбивка по поездкам и участникам.

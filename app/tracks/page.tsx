@@ -21,11 +21,7 @@ export default function TracksArchivePage() {
 
   return (
     <div className="wrap">
-      <Link href="/" className="trip-back">
-        ← Все поездки
-      </Link>
-
-      <div className="trip-hero">
+      <div className="trip-hero page-head">
         <h1 className="trip-hero__title">Архив треков</h1>
         <p className="trip-hero__subtitle">
           Оригинальные файлы в том виде, в каком они были присланы — без обрезки точек,

@@ -8,7 +8,10 @@ export type TripListItem = {
   slug: string;
   year: number;
   title: string;
+  subtitle?: string;
   meta: string;
+  dates?: string;
+  cover?: string;
   placeholder: boolean;
   distanceKm?: number;
   days?: number;
@@ -47,7 +50,7 @@ export default function TripList({ trips }: { trips: TripListItem[] }) {
       <div className="trip-filters">
         <label className="trip-filters__field">
           <span className="trip-filters__label">участник</span>
-          <select value={person} onChange={(e) => setPerson(e.target.value)}>
+          <select id="filter-person" value={person} onChange={(e) => setPerson(e.target.value)}>
             <option value="">все</option>
             {people.map((p) => (
               <option key={p.value} value={p.value}>
@@ -58,7 +61,7 @@ export default function TripList({ trips }: { trips: TripListItem[] }) {
         </label>
         <label className="trip-filters__field">
           <span className="trip-filters__label">страна</span>
-          <select value={country} onChange={(e) => setCountry(e.target.value)}>
+          <select id="filter-country" value={country} onChange={(e) => setCountry(e.target.value)}>
             <option value="">все</option>
             {countries.map((c) => (
               <option key={c.value} value={c.value}>
@@ -87,38 +90,51 @@ export default function TripList({ trips }: { trips: TripListItem[] }) {
       {shown.length === 0 ? (
         <p className="empty-state">Таких поездок пока не было — но всё впереди.</p>
       ) : (
-        <div className="trip-list">
+        <div className="banner-list">
           {shown.map((trip) => (
             <Link
               key={trip.slug}
               href={`/trips/${trip.slug}`}
-              className={`trip-row${trip.placeholder ? " trip-row--placeholder" : ""}`}
+              className={`trip-banner${trip.placeholder ? " trip-banner--soon" : ""}`}
             >
-              <span className="trip-row__year">{trip.year}</span>
-              <span>
-                <span className="trip-row__title">{trip.title}</span>
-                <span className="trip-row__meta">{trip.meta}</span>
-              </span>
-              {trip.placeholder ? (
-                <span className="trip-row__soon">скоро анонсируем</span>
-              ) : (
-                <span className="trip-row__stats">
-                  {typeof trip.distanceKm === "number" && (
-                    <span className="trip-row__stat">
-                      <b>{trip.distanceKm}</b> км
-                    </span>
-                  )}
-                  {trip.days ? (
-                    <span className="trip-row__stat">
-                      <b>{trip.days}</b> дн.
-                    </span>
-                  ) : null}
-                  {trip.participants.length ? (
-                    <span className="trip-row__stat">
-                      <b>{trip.participants.length}</b> уч.
-                    </span>
-                  ) : null}
-                </span>
+              <div className={`trip-banner__media${trip.cover ? "" : " trip-banner__media--empty"}`}>
+                {trip.cover && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={trip.cover} alt="" loading="lazy" className="trip-banner__img" />
+                )}
+                <div className="trip-banner__shade" />
+                <div className="trip-banner__overlay">
+                  <span className="kicker">
+                    {trip.year}
+                    {trip.dates && !trip.placeholder ? ` · ${trip.dates}` : ""}
+                  </span>
+                  <span className="trip-banner__title">{trip.title}</span>
+                  {trip.subtitle && <span className="trip-banner__subtitle">{trip.subtitle}</span>}
+                  {trip.placeholder && <span className="trip-banner__subtitle">скоро анонсируем</span>}
+                </div>
+              </div>
+              {!trip.placeholder && (
+                <div className="trip-banner__details">
+                  <span className="trip-banner__route">{trip.meta}</span>
+                  <span className="trip-banner__stats">
+                    {typeof trip.distanceKm === "number" && (
+                      <span>
+                        <b>{trip.distanceKm}</b> км
+                      </span>
+                    )}
+                    {trip.days ? (
+                      <span>
+                        <b>{trip.days}</b> {plural(trip.days, ["день", "дня", "дней"])}
+                      </span>
+                    ) : null}
+                    {trip.participants.length ? (
+                      <span>
+                        <b>{trip.participants.length}</b>{" "}
+                        {plural(trip.participants.length, ["участник", "участника", "участников"])}
+                      </span>
+                    ) : null}
+                  </span>
+                </div>
               )}
             </Link>
           ))}

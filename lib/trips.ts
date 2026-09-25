@@ -41,6 +41,10 @@ export type Trip = {
   dailyKm: number[];
   gpxUrl?: string;
   source?: string;
+  /** Cover photo: frontmatter `cover`, else the first photo of the report. */
+  cover?: string;
+  /** Every photo in the report, in order (for the cover picker). */
+  photos: string[];
   sections: TripSection[];
   track: TrackPoint[] | null;
   dayTracks: TrackPoint[][][] | null;
@@ -79,6 +83,9 @@ function splitIntoSections(html: string): TripSection[] {
 export function getTripBySlug(slug: string): Trip {
   const raw = fs.readFileSync(path.join(TRIPS_DIR, `${slug}.md`), "utf-8");
   const { data, content } = matter(raw);
+  const photos = [...content.matchAll(/<!--\s*(?:photo|gallery):\s*([\s\S]*?)-->/g)].flatMap((m) =>
+    m[1].split(",").map((s) => s.trim()).filter(Boolean)
+  );
   let contentHtml = marked.parse(content, { async: false }) as string;
 
   // Photo markers (<!-- photo: URL -->) render as plain <img> tags pointing
@@ -165,6 +172,8 @@ export function getTripBySlug(slug: string): Trip {
     dailyKm: data.dailyKm ?? [],
     gpxUrl: data.gpxUrl,
     source: data.source,
+    cover: data.cover ?? photos[0],
+    photos,
     sections: splitIntoSections(contentHtml),
     track: getTrackForSlug(slug),
     dayTracks: getDayTracksForSlug(slug),

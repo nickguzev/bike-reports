@@ -6,30 +6,30 @@ import type { TrackPoint, CategorizedSegment } from "@/lib/gpx";
 import RouteMap, { CATEGORY_COLORS, CATEGORY_LABELS } from "@/components/RouteMap";
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-const DAY_COLORS = ["#c1501b", "#445c3c", "#7c8570", "#8a4b2e", "#5c6b45"];
+const DAY_COLORS = ["#f09a68", "#a9c39a", "#e6cf8a", "#d98ab0", "#8fc1d4"];
 
 // Muted "paper" map styling to match the site's palette instead of Google's defaults.
 const PAPER_STYLE: google.maps.MapTypeStyle[] = [
-  { elementType: "geometry", stylers: [{ color: "#ece7d8" }] },
-  { elementType: "labels.text.fill", stylers: [{ color: "#7c8570" }] },
-  { elementType: "labels.text.stroke", stylers: [{ color: "#ece7d8" }] },
-  { featureType: "administrative", elementType: "labels.text.fill", stylers: [{ color: "#4c5744" }] },
-  { featureType: "administrative", elementType: "geometry", stylers: [{ color: "#c7bd9e" }] },
-  { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#ece7d8" }] },
+  { elementType: "geometry", stylers: [{ color: "#1d251b" }] },
+  { elementType: "labels.text.fill", stylers: [{ color: "#a39e8e" }] },
+  { elementType: "labels.text.stroke", stylers: [{ color: "#141a13" }] },
+  { featureType: "administrative", elementType: "labels.text.fill", stylers: [{ color: "#cfc8b4" }] },
+  { featureType: "administrative", elementType: "geometry", stylers: [{ color: "#3b4637" }] },
+  { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#1d251b" }] },
   { featureType: "poi", stylers: [{ visibility: "off" }] },
-  { featureType: "road", elementType: "geometry", stylers: [{ color: "#e1dac4" }] },
-  { featureType: "road", elementType: "labels", stylers: [{ visibility: "simplified" }] },
-  { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#d8cfae" }] },
+  { featureType: "road", elementType: "geometry", stylers: [{ color: "#2c3629" }] },
+  { featureType: "road", elementType: "labels", stylers: [{ visibility: "off" }] },
+  { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#39452f" }] },
   { featureType: "transit", stylers: [{ visibility: "off" }] },
-  { featureType: "water", elementType: "geometry", stylers: [{ color: "#c9d6cd" }] },
+  { featureType: "water", elementType: "geometry", stylers: [{ color: "#0f1b1c" }] },
 ];
 
 // Google Maps needs real hex colors, not our CSS custom properties.
 const CATEGORY_HEX: Record<CategorizedSegment["category"], string> = {
-  cycling: "#c1501b",
-  hiking: "#445c3c",
-  walk: "#a8875a",
-  transport: "#7c8570",
+  cycling: "#f09a68",
+  hiking: "#a9c39a",
+  walk: "#e6cf8a",
+  transport: "#a39e8e",
 };
 
 type StopMarker = { lat: number; lon: number; label?: string };
@@ -132,11 +132,11 @@ export default function InteractiveMap({
           new google.maps.Marker({
             position: { lat: firstPoint.lat, lng: firstPoint.lon },
             map,
-            label: { text: "1", color: "#ece7d8", fontSize: "11px", fontWeight: "700" },
+            label: { text: "1", color: "#141a13", fontSize: "11px", fontWeight: "700" },
             icon: {
               path: google.maps.SymbolPath.CIRCLE,
               scale: 9,
-              fillColor: "#212f1f",
+              fillColor: "#f09a68",
               fillOpacity: 1,
               strokeWeight: 0,
             },
@@ -147,9 +147,9 @@ export default function InteractiveMap({
             icon: {
               path: google.maps.SymbolPath.CIRCLE,
               scale: 8,
-              fillColor: "#ece7d8",
+              fillColor: "#141a13",
               fillOpacity: 1,
-              strokeColor: "#212f1f",
+              strokeColor: "#eee8d8",
               strokeWeight: 2,
             },
           });
@@ -163,9 +163,9 @@ export default function InteractiveMap({
             icon: {
               path: google.maps.SymbolPath.CIRCLE,
               scale: 7,
-              fillColor: "#ece7d8",
+              fillColor: "#141a13",
               fillOpacity: 1,
-              strokeColor: "#445c3c",
+              strokeColor: "#a9c39a",
               strokeWeight: 2.5,
             },
           });

@@ -16,11 +16,7 @@ export default function PeopleIndexPage() {
 
   return (
     <div className="wrap">
-      <Link href="/" className="trip-back">
-        ← Все поездки
-      </Link>
-
-      <div className="trip-hero">
+      <div className="trip-hero page-head">
         <h1 className="trip-hero__title">Единовеломышленники</h1>
         <p className="trip-hero__subtitle">
           Компания, на которой всё держится — от письма про фестиваль в 2010-м до

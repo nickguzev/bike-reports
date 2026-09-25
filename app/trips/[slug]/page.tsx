@@ -47,7 +47,22 @@ export default async function TripPage({
 
   const { prev, next } = getAdjacentTrips(slug);
 
+  const kicker = [trip.dates, trip.routeSummary || trip.country].filter(Boolean).join(" · ");
+
   return (
+    <>
+    <section className={`cover-hero${trip.cover ? "" : " cover-hero--plain"}`}>
+      {trip.cover && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={trip.cover} alt="" className="cover-hero__img" />
+      )}
+      {trip.cover && <div className="cover-hero__shade" />}
+      <div className="cover-hero__body">
+        {kicker && <span className="kicker">{kicker}</span>}
+        <h1 className="cover-hero__title">{trip.title}</h1>
+        {trip.subtitle && <p className="cover-hero__subtitle">{trip.subtitle}</p>}
+      </div>
+    </section>
     <div className="wrap">
       <div className="trip-top-nav">
         <Link href="/" className="trip-back">
@@ -57,14 +72,6 @@ export default async function TripPage({
       </div>
 
       <article>
-        <div className="trip-hero">
-          {(trip.routeSummary || trip.country) && (
-            <p className="trip-hero__country">{trip.routeSummary || trip.country}</p>
-          )}
-          <h1 className="trip-hero__title">{trip.title}</h1>
-          {trip.subtitle && <p className="trip-hero__subtitle">{trip.subtitle}</p>}
-          {trip.dates && <p className="trip-hero__dates">{trip.dates}</p>}
-        </div>
 
         {trip.placeholder && !trip.route?.length && !trip.track && !trip.dayTracks && !trip.categorizedTrack && !trip.distanceKm && trip.sections.every((s) => !s.html.trim()) ? (
           <p className="empty-state">Отчёт об этой поездке ещё готовится.</p>
@@ -176,5 +183,6 @@ export default async function TripPage({
 
       <TripPager prev={prev} next={next} />
     </div>
+    </>
   );
 }
