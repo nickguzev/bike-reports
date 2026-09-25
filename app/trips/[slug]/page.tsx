@@ -7,6 +7,7 @@ import InteractiveMap from "@/components/InteractiveMap";
 import AuthorBlock from "@/components/AuthorBlock";
 import ParticipantsLine from "@/components/ParticipantsLine";
 import TripPager from "@/components/TripPager";
+import PhotoLightbox from "@/components/PhotoLightbox";
 import { plural } from "@/lib/plural";
 
 export function generateStaticParams() {
@@ -171,6 +172,7 @@ export default async function TripPage({
       </article>
 
       <Script src="https://www.instagram.com/embed.js" strategy="lazyOnload" />
+      <PhotoLightbox />
 
       <TripPager prev={prev} next={next} />
     </div>

@@ -1,9 +1,21 @@
 import Link from "next/link";
-import { getAllTrips, getYearRange, type Trip } from "@/lib/trips";
+import { getAllTrips, getYearRange } from "@/lib/trips";
+import TripList, { type TripListItem } from "@/components/TripList";
 
 export default function Home() {
   const trips = getAllTrips();
   const { min, max } = getYearRange();
+  const items: TripListItem[] = trips.map((trip) => ({
+    slug: trip.slug,
+    year: trip.year,
+    title: trip.title,
+    meta: trip.routeSummary || trip.country,
+    placeholder: trip.placeholder,
+    distanceKm: trip.distanceKm,
+    days: trip.days ?? (trip.dailyKm?.length || undefined),
+    participants: trip.participants,
+    countries: (trip.country || "").split("·").map((s) => s.trim()).filter(Boolean),
+  }));
 
   return (
     <div className="wrap">
@@ -39,52 +51,10 @@ export default function Home() {
         {trips.length === 0 ? (
           <p className="empty-state">Пока ни одной записи — первая поездка уже готовится.</p>
         ) : (
-          <div className="trip-list">
-            {trips.map((trip) => (
-              <Link
-                key={trip.slug}
-                href={`/trips/${trip.slug}`}
-                className={`trip-row${trip.placeholder ? " trip-row--placeholder" : ""}`}
-              >
-                <span className="trip-row__year">{trip.year}</span>
-                <span>
-                  <span className="trip-row__title">{trip.title}</span>
-                  <span className="trip-row__meta">{trip.routeSummary || trip.country}</span>
-                </span>
-                {trip.placeholder ? (
-                  <span className="trip-row__soon">скоро анонсируем</span>
-                ) : (
-                  <span className="trip-row__stats">{statBits(trip)}</span>
-                )}
-              </Link>
-            ))}
-          </div>
+          <TripList trips={items} />
         )}
       </main>
     </div>
   );
 }
 
-function statBits(trip: Trip) {
-  const days = trip.days ?? (trip.dailyKm?.length || undefined);
-  const peopleCount = trip.participants.length;
-  return (
-    <>
-      {typeof trip.distanceKm === "number" && (
-        <span className="trip-row__stat">
-          <b>{trip.distanceKm}</b> км
-        </span>
-      )}
-      {days ? (
-        <span className="trip-row__stat">
-          <b>{days}</b> дн.
-        </span>
-      ) : null}
-      {peopleCount ? (
-        <span className="trip-row__stat">
-          <b>{peopleCount}</b> уч.
-        </span>
-      ) : null}
-    </>
-  );
-}

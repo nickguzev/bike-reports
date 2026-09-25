@@ -79,7 +79,7 @@ source: "https://forum.awd.ru/viewtopic.php?t=268254"
 <!-- photo: https://lh3.googleusercontent.com/4C1iw97Ys0aM0rr0Xy3nBjcY2X447T0V24aLcHSDcp7d=w948-h711-no -->
 бегут!
 <!-- photo: https://lh3.googleusercontent.com/HwnCfGw3pIgLqzxOfpj_TD6XbnRHHejWp6mpLGzHmXkM=w948-h711-no -->
-[смотреть на YouTube](http://www.youtube.com/watch?v=Uh3mkFGpd2I)
+[смотреть на YouTube](https://www.youtube.com/watch?v=Uh3mkFGpd2I)
 
 Дождались наших новых знакомых из поезда, покричали слова поддержки и с чувством выполненного долга наконец поехали в путь через мост.
 <!-- photo: https://lh3.googleusercontent.com/17sFlYHBUsc7Ahz8xePA-8cUV9i1djwuN9oAooIEFEf0=w948-h711-no -->

@@ -77,7 +77,6 @@ export default function InteractiveMap({
         if (!mapRef.current) return;
 
         const map = new google.maps.Map(mapRef.current, {
-          mapId: "BIKEREPORTS_MAP",
           styles: PAPER_STYLE,
           disableDefaultUI: false,
           streetViewControl: false,

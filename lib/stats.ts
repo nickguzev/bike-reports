@@ -109,17 +109,32 @@ export function getCountryVisits(): { country: string; count: number }[] {
     .sort((a, b) => b.count - a.count || a.country.localeCompare(b.country, "ru"));
 }
 
-/** One point per riding day across every trip, in chronological order, for a "is the average daily distance trending up?" chart. */
-export function getDailyKmTrend(): { label: string; km: number }[] {
+/**
+ * One point per riding day across every trip, in chronological order, for a
+ * "is the average daily distance trending up?" chart. Trips without a per-day
+ * breakdown get their total distance split evenly across their days
+ * (flagged as estimated so the chart can show them differently).
+ */
+export function getDailyKmTrend(): { label: string; km: number; estimated?: boolean }[] {
   const trips = [...getAllTrips()]
-    .filter((t) => !t.placeholder && t.dailyKm?.length)
+    .filter(
+      (t) =>
+        !t.placeholder &&
+        (t.dailyKm?.length || (typeof t.distanceKm === "number" && (t.days ?? 0) > 0))
+    )
     .sort((a, b) => a.year - b.year || (a.order ?? 0) - (b.order ?? 0));
 
-  const points: { label: string; km: number }[] = [];
+  const points: { label: string; km: number; estimated?: boolean }[] = [];
   for (const t of trips) {
-    t.dailyKm.forEach((km, i) => {
-      points.push({ label: `${t.year}·${i + 1}`, km });
-    });
+    if (t.dailyKm?.length) {
+      t.dailyKm.forEach((km, i) => points.push({ label: `${t.year}·${i + 1}`, km }));
+    } else {
+      const days = t.days!;
+      const avg = Math.round((t.distanceKm! / days) * 10) / 10;
+      for (let i = 0; i < days; i++) {
+        points.push({ label: `${t.year}·${i + 1}`, km: avg, estimated: true });
+      }
+    }
   }
   return points;
 }

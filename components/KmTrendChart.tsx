@@ -1,4 +1,6 @@
-type Point = { label: string; km: number };
+import { plural } from "@/lib/plural";
+
+type Point = { label: string; km: number; estimated?: boolean };
 
 const W = 680;
 const H = 220;
@@ -27,6 +29,7 @@ export default function KmTrendChart({ points }: { points: Point[] }) {
   if (points.length < 2) return null;
 
   const kms = points.map((p) => p.km);
+  const estimated = points.filter((p) => p.estimated).length;
   const maxKm = Math.max(...kms);
   const { slope, intercept } = linearRegression(kms);
 
@@ -52,7 +55,10 @@ export default function KmTrendChart({ points }: { points: Point[] }) {
   points.forEach((p, i) => {
     const year = p.label.split("·")[0];
     if (year !== lastLabel) {
-      yearLabels.push({ x: centerX(i), text: year });
+      const x = centerX(i);
+      const prev = yearLabels[yearLabels.length - 1];
+      // skip a label that would collide with the previous one
+      if (!prev || x - prev.x >= 24) yearLabels.push({ x, text: year });
       lastLabel = year;
     }
   });
@@ -73,7 +79,7 @@ export default function KmTrendChart({ points }: { points: Point[] }) {
             y={y(p.km)}
             width={barWidth}
             height={Math.max(barH(p.km), 1)}
-            fill="var(--route)"
+            fill={p.estimated ? "var(--route-soft)" : "var(--route)"}
           />
         ))}
 
@@ -94,7 +100,10 @@ export default function KmTrendChart({ points }: { points: Point[] }) {
         ))}
       </svg>
       <p className="chart-block__label">
-        {points.length} катальных дней за всё время, хронологически — тренд {direction} (пунктир)
+        {points.length} {plural(points.length, ["катальный день", "катальных дня", "катальных дней"])} за всё
+        время, хронологически — тренд {direction} (пунктир).
+        {estimated > 0 &&
+          " Светлые столбики — поездки без разбивки по дням: общий пробег поровну поделён на число дней."}
       </p>
     </div>
   );

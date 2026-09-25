@@ -5,7 +5,7 @@ year: 2026
 order: 3
 country: "Россия"
 routeSummary: "Калуга → Николо-Ленивец → Калуга"
-dates: "сентябрь 2026"
+dates: "19–20 сентября 2026"
 days: 2
 distanceKm: 149
 elevationM: 530

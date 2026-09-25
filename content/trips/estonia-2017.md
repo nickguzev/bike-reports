@@ -34,7 +34,7 @@ source: "https://forum.awd.ru/viewtopic.php?t=318425"
 
 <!-- author: kirill -->
 
-Отчёт о поездке по Эстонии на велосипедах на 4 дня майских праздников. Общий пробег - [ссылка](https://drive.google.com/open?id=1dnVjXEehr1okdstCd15wgFkXqkc&usp=sharing)
+Отчёт о поездке по Эстонии на велосипедах на 4 дня майских праздников. Общий пробег — [319 км](https://drive.google.com/open?id=1dnVjXEehr1okdstCd15wgFkXqkc&usp=sharing).
 <!-- photo: https://forum.awd.ru/gallery/images/upload/fe4/53c/fe453c54c74701a80d59db93b50ea579.png -->
 Рождение идеи. Когда-то давно Колян предложил маршрут на 3-4 дня из Питера в Кингисепп по берегу моря. В этом году мы про него вспомнили, сначала решили продлить его небольшим крюком до Нарвы, а потом [Паша](/people/pasha-k) сагитировал всех проехать аналогичный трип, но из Таллина. К началу марта, когда надо было брать билеты на поезд, нас набралось 7 человек, включая Ленку (спойлер - жопную фотку в этот раз не делали).
 <!-- photo: https://forum.awd.ru/gallery/images/upload/db3/8bc/db38bc713f821802ebf958055faeb288.jpg -->

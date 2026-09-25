@@ -18,7 +18,6 @@ participants:
 route:
   - "Витебск"
   - "Орша"
-gpxUrl: "http://www.gpsies.com/map.do?fileId=hvbvbkzvincjxvgk"
 source: "https://forum.awd.ru/viewtopic.php?t=168052"
 ---
 

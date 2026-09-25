@@ -4,7 +4,7 @@ subtitle: "Австрия → Словакия → Венгрия"
 year: 2010
 country: "Австрия · Словакия · Венгрия"
 dates: "1–5 августа 2010"
-days: 6
+days: 5
 distanceKm: 158
 elevationM: 102
 dailyKm:

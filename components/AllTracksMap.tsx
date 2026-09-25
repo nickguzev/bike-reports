@@ -54,7 +54,6 @@ export default function AllTracksMap({ tracks }: { tracks: TripTrack[] }) {
       .then(() => {
         if (!mapRef.current) return;
         const map = new google.maps.Map(mapRef.current, {
-          mapId: "BIKEREPORTS_ALL_TRACKS",
           styles: PAPER_STYLE,
           disableDefaultUI: false,
           streetViewControl: false,

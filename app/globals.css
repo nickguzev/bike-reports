@@ -812,3 +812,147 @@ a {
   color: var(--ink-soft);
   line-height: 1.6;
 }
+
+/* -------- home: filters -------- */
+
+.trip-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.75rem 1.5rem;
+  margin: 0.5rem 0 1.25rem;
+}
+
+.trip-filters__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.trip-filters__label {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.trip-filters select {
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  padding: 0.35rem 1.8rem 0.35rem 0.5rem;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-soft) 50%),
+    linear-gradient(135deg, var(--ink-soft) 50%, transparent 50%);
+  background-position: calc(100% - 13px) 55%, calc(100% - 8px) 55%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+  min-width: 10rem;
+  cursor: pointer;
+}
+
+.trip-filters select:focus-visible {
+  border-color: var(--route);
+}
+
+.trip-filters__summary {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  padding-bottom: 0.4rem;
+}
+
+.trip-filters__reset {
+  font: inherit;
+  color: var(--route);
+  background: none;
+  border: none;
+  border-bottom: 1px solid currentColor;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* -------- photo lightbox -------- */
+
+.trip-body img.trip-photo {
+  cursor: zoom-in;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(22, 28, 20, 0.94);
+  cursor: zoom-out;
+}
+
+.lightbox__img {
+  max-width: 94vw;
+  max-height: 88vh;
+  object-fit: contain;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.lightbox__close,
+.lightbox__nav {
+  position: absolute;
+  font-family: var(--font-display);
+  color: var(--paper);
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  line-height: 1;
+}
+
+.lightbox__close:hover,
+.lightbox__nav:hover {
+  opacity: 1;
+  color: var(--route-soft);
+}
+
+.lightbox__close {
+  top: 0.75rem;
+  right: 1rem;
+  font-size: 2.4rem;
+}
+
+.lightbox__nav {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  padding: 1.5rem 0.9rem;
+}
+
+.lightbox__nav--prev {
+  left: 0.25rem;
+}
+
+.lightbox__nav--next {
+  right: 0.25rem;
+}
+
+.lightbox__counter {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+  color: var(--paper-dim);
+  opacity: 0.8;
+}
+
+@media (max-width: 640px) {
+  .lightbox__nav {
+    top: auto;
+    bottom: 0.25rem;
+    transform: none;
+  }
+}

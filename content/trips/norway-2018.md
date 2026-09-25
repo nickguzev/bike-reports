@@ -865,7 +865,7 @@ Topeak, в отличие от Thule, без рэнкавера не обойд�
 <!-- photo: https://forum.awd.ru/gallery/images/upload/e20/812/e208128d89f65699e26dc6bd534ed12e.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/ff1/1d5/ff11d5a49b5e79f743a163d3bf80dc8f.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/478/bd8/478bd8277ffab6ffaa9bd3667577bb29.jpg -->
-Саша, у которого мы снимаем [ссылка](http://..7eer.net/c/327741/264339/4273?uraw=www...ru/rooms/3898660) через ., прислал название магазина, где надо забрать ключ. Оказывается, это сложившаяся услуга: на кассе надо показать продавцу код, который тебе прислал хозяин, и он достаёт из ячейки ключи. Едем заселяться.
+Саша, у которого мы снимаем жильё через Airbnb, прислал название магазина, где надо забрать ключ. Оказывается, это сложившаяся услуга: на кассе надо показать продавцу код, который тебе прислал хозяин, и он достаёт из ячейки ключи. Едем заселяться.
 <!-- photo: https://forum.awd.ru/gallery/images/upload/d2d/4fd/d2d4fdf5a3b83186b04bc71ce887e77b.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/60d/0e2/60d0e23b7341f53f4fd699cb979158bb.jpg -->
 <!-- photo: https://forum.awd.ru/gallery/images/upload/1de/bc0/1debc0d263321bc883c1dd1a330a5ba2.jpg -->

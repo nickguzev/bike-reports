@@ -42,7 +42,6 @@ geoCities:
   - {lat: 57.3894, lon: 21.5606, name: "Вентспилс"}
 geoMountains: none
 geoSea: west
-gpxUrl: "http://g.co/maps/525r5"
 source: "https://forum.awd.ru/viewtopic.php?t=155988"
 ---
 
