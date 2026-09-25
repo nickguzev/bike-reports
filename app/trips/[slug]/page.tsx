@@ -7,6 +7,7 @@ import InteractiveMap from "@/components/InteractiveMap";
 import AuthorBlock from "@/components/AuthorBlock";
 import ParticipantsLine from "@/components/ParticipantsLine";
 import TripPager from "@/components/TripPager";
+import { plural } from "@/lib/plural";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -104,31 +105,31 @@ export default async function TripPage({
               {typeof trip.distanceKm === "number" && (
                 <div className="stat">
                   <span className="stat__value">{trip.distanceKm}</span>
-                  <span className="stat__label">километров</span>
+                  <span className="stat__label">{plural(trip.distanceKm, ["километр", "километра", "километров"])}</span>
                 </div>
               )}
               {trip.elevationM ? (
                 <div className="stat">
                   <span className="stat__value">{trip.elevationM}</span>
-                  <span className="stat__label">метров набора</span>
+                  <span className="stat__label">{plural(trip.elevationM, ["метр набора", "метра набора", "метров набора"])}</span>
                 </div>
               ) : null}
               {trip.days ?? trip.dailyKm?.length ? (
                 <div className="stat">
                   <span className="stat__value">{trip.days ?? trip.dailyKm.length}</span>
-                  <span className="stat__label">дней</span>
+                  <span className="stat__label">{plural(trip.days ?? trip.dailyKm.length, ["день", "дня", "дней"])}</span>
                 </div>
               ) : null}
               {typeof trip.punctures === "number" ? (
                 <div className="stat">
                   <span className="stat__value">{trip.punctures}</span>
-                  <span className="stat__label">проколов</span>
+                  <span className="stat__label">{plural(trip.punctures, ["прокол", "прокола", "проколов"])}</span>
                 </div>
               ) : null}
               {typeof trip.lostBikes === "number" && trip.lostBikes > 0 ? (
                 <div className="stat">
                   <span className="stat__value">{trip.lostBikes}</span>
-                  <span className="stat__label">потерянных велосипеда</span>
+                  <span className="stat__label">{plural(trip.lostBikes, ["потерянный велосипед", "потерянных велосипеда", "потерянных велосипедов"])}</span>
                 </div>
               ) : null}
             </div>

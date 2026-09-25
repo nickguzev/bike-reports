@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { plural, TRIP_FORMS } from "@/lib/plural";
 import type { Metadata } from "next";
 import { getSiteStats, getTripRankings, getAllTripTracks, getDailyKmTrend, getCountryVisits } from "@/lib/stats";
 import { getAllPeople } from "@/lib/people";
@@ -37,8 +38,8 @@ export default function StatsPage() {
 
       <div className="stat-strip">
         <div className="stat">
-          <span className="stat__value">{stats.tripCount}</span>
-          <span className="stat__label">поездок</span>
+          <span className="stat__value">{stats.reportedTripCount}</span>
+          <span className="stat__label">{plural(stats.reportedTripCount, TRIP_FORMS)}</span>
         </div>
         <div className="stat">
           <span className="stat__value">{stats.totalKm}</span>
@@ -52,7 +53,7 @@ export default function StatsPage() {
         )}
         <div className="stat">
           <span className="stat__value">{stats.peopleCount}</span>
-          <span className="stat__label">участников</span>
+          <span className="stat__label">{plural(stats.peopleCount, ["участник", "участника", "участников"])}</span>
         </div>
       </div>
 
@@ -108,7 +109,7 @@ export default function StatsPage() {
             <li key={c.country}>
               <span>{c.country}</span>
               <span>
-                {c.count} {pluralVisits(c.count)}
+                {c.count} {plural(c.count, ["раз", "раза", "раз"])}
               </span>
             </li>
           ))}
@@ -128,7 +129,7 @@ export default function StatsPage() {
           <Link key={person.slug} href={`/people/${person.slug}`} className="person-row">
             <span className="person-row__name">{person.name}</span>
             <span className="person-row__trips">
-              {person.tripCount} {pluralTrips(person.tripCount)}
+              {person.tripCount} {plural(person.tripCount, TRIP_FORMS)}
             </span>
             <span className="person-row__km">
               {person.totalKm > 0 ? `${person.totalKm} км` : "—"}
@@ -140,21 +141,7 @@ export default function StatsPage() {
   );
 }
 
-function pluralTrips(n: number) {
-  const mod10 = n % 10;
-  const mod100 = n % 100;
-  if (mod10 === 1 && mod100 !== 11) return "поездка";
-  if ([2, 3, 4].includes(mod10) && ![12, 13, 14].includes(mod100)) return "поездки";
-  return "поездок";
-}
 
-function pluralVisits(n: number) {
-  const mod10 = n % 10;
-  const mod100 = n % 100;
-  if (mod10 === 1 && mod100 !== 11) return "раз";
-  if ([2, 3, 4].includes(mod10) && ![12, 13, 14].includes(mod100)) return "раза";
-  return "раз";
-}
 
 function RankingBlock({
   title,

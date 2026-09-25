@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { plural, TRIP_FORMS } from "@/lib/plural";
 import type { Metadata } from "next";
 import { getAllPeople } from "@/lib/people";
 import { BIOS } from "@/lib/bios";
@@ -35,7 +36,7 @@ export default function PeopleIndexPage() {
                 {person.name}
               </Link>
               <span className="people-index__stats">
-                {person.tripCount} {pluralTrips(person.tripCount)}
+                {person.tripCount} {plural(person.tripCount, TRIP_FORMS)}
                 {person.totalKm > 0 ? ` · ${person.totalKm} км` : ""}
               </span>
             </div>
@@ -49,10 +50,3 @@ export default function PeopleIndexPage() {
   );
 }
 
-function pluralTrips(n: number) {
-  const mod10 = n % 10;
-  const mod100 = n % 100;
-  if (mod10 === 1 && mod100 !== 11) return "поездка";
-  if ([2, 3, 4].includes(mod10) && ![12, 13, 14].includes(mod100)) return "поездки";
-  return "поездок";
-}

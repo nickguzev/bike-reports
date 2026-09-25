@@ -11,12 +11,13 @@ export default function DailyKmChart({ dailyKm, compact = false }: Props) {
   const gap = compact ? 2 : 8;
   const height = compact ? 34 : 96;
   const width = dailyKm.length * (barWidth + gap) - gap;
+  const labelSpace = compact ? 0 : 18;
 
   return (
     <svg
-      viewBox={`0 0 ${width} ${height}`}
+      viewBox={`0 0 ${width} ${height + labelSpace}`}
       width={width}
-      height={height}
+      height={height + labelSpace}
       role="img"
       aria-label={`Километраж по дням: ${dailyKm.join(", ")}`}
     >

@@ -1,6 +1,6 @@
 import { getAllTrips, type Trip } from "@/lib/trips";
 import { getAllPeople } from "@/lib/people";
-import { getTrackForSlug, getDayTracksForSlug, type TrackPoint } from "@/lib/gpx";
+import { getTrackForSlug, getDayTracksForSlug, getCategorizedTrackForSlug, type TrackPoint } from "@/lib/gpx";
 import type { TripTrack } from "@/components/AllTracksMap";
 
 export function getSiteStats() {
@@ -66,12 +66,15 @@ export function getAllTripTracks(): TripTrack[] {
   for (const t of trips) {
     const dayTracks = getDayTracksForSlug(t.slug);
     const single = getTrackForSlug(t.slug);
+    const categorized = getCategorizedTrackForSlug(t.slug);
     let points: TrackPoint[] = [];
 
     if (dayTracks) {
       points = dayTracks.flat(2);
     } else if (single) {
       points = single;
+    } else if (categorized) {
+      points = categorized.filter((s) => s.category === "cycling").flatMap((s) => s.points);
     }
 
     if (points.length > 1) {

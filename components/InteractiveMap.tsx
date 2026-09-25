@@ -52,8 +52,10 @@ export default function InteractiveMap({
   geo,
 }: Props) {
   const mapRef = useRef<HTMLDivElement>(null);
+  const hasData =
+    (categorizedTrack?.length ?? 0) > 0 || (dayTracks?.length ?? 0) > 0 || (track?.length ?? 0) > 1;
   const [status, setStatus] = useState<"loading" | "ready" | "error">(
-    API_KEY ? "loading" : "error"
+    API_KEY && hasData ? "loading" : "error"
   );
 
   useEffect(() => {
@@ -65,10 +67,7 @@ export default function InteractiveMap({
       : track && track.length > 1
       ? [[track]]
       : [];
-    if (!hasCategorized && days.length === 0) {
-      setStatus("error");
-      return;
-    }
+    if (!hasCategorized && days.length === 0) return;
 
     setOptions({ key: API_KEY, v: "weekly" });
 

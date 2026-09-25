@@ -3,7 +3,7 @@ title: "Братская Беларусь"
 subtitle: "5 улиток, 3 доширака, 120 км на велах"
 year: 2012
 order: 2
-country: "Белоруссия"
+country: "Беларусь"
 routeSummary: "Витебск → Орша"
 dates: "август 2012"
 days: 2

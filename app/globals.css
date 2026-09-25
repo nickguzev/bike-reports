@@ -577,6 +577,10 @@ a {
   border-bottom: 1px solid var(--line);
 }
 
+.route-map__caption + .route-map__caption {
+  margin-left: 1.25rem;
+}
+
 .route-map__caption:hover {
   color: var(--route);
   border-color: var(--route);
@@ -800,4 +804,11 @@ a {
 
 .trip-pager__link:hover .trip-pager__title {
   color: var(--route);
+}
+
+.person-bio {
+  margin: 0.75rem 0 0;
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  line-height: 1.6;
 }

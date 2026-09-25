@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { plural, TRIP_FORMS } from "@/lib/plural";
 import { notFound } from "next/navigation";
 import { getAllPeople, getPersonBySlug } from "@/lib/people";
+import { BIOS } from "@/lib/bios";
 
 export function generateStaticParams() {
   return getAllPeople().map((p) => ({ slug: p.slug }));
@@ -29,19 +31,20 @@ export default async function PersonPage({
 
   return (
     <div className="wrap">
-      <Link href="/" className="trip-back">
-        ← Все поездки
+      <Link href="/people" className="trip-back">
+        ← Все участники
       </Link>
 
       <div className="trip-hero">
         <h1 className="trip-hero__title">{person.name}</h1>
+        {BIOS[person.slug] && <p className="person-bio">{BIOS[person.slug]}</p>}
       </div>
 
       <div className="stat-strip">
         <div className="stat">
           <span className="stat__value">{person.tripCount}</span>
           <span className="stat__label">
-            {pluralTrips(person.tripCount)}
+            {plural(person.tripCount, TRIP_FORMS)}
           </span>
         </div>
         {person.totalKm > 0 && (
@@ -61,7 +64,7 @@ export default async function PersonPage({
               <span className="trip-row__year">{trip.year}</span>
               <span>
                 <span className="trip-row__title">{trip.title}</span>
-                <span className="trip-row__meta">{trip.country}</span>
+                <span className="trip-row__meta">{trip.routeSummary || trip.country}</span>
               </span>
               <span />
             </Link>
@@ -71,10 +74,3 @@ export default async function PersonPage({
   );
 }
 
-function pluralTrips(n: number) {
-  const mod10 = n % 10;
-  const mod100 = n % 100;
-  if (mod10 === 1 && mod100 !== 11) return "поездка";
-  if ([2, 3, 4].includes(mod10) && ![12, 13, 14].includes(mod100)) return "поездки";
-  return "поездок";
-}
