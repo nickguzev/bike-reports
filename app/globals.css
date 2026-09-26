@@ -1042,3 +1042,7 @@ a {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+.trip-clips:has(> .trip-clip:only-child) {
+  grid-template-columns: minmax(0, 22rem);
+}
