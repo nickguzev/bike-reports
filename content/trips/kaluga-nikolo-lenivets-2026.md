@@ -61,6 +61,10 @@ overnightStop:
 
 ### Видео
 
-<!-- film: https://disk.yandex.ru/i/ybjW4_WdKFP4xw | Фильм Олега «БКТ велоуикенд» | смотреть на Яндекс Диске ↗ -->
+Видеоотчёт [Паши П](/people/pasha-p) — «Вело-уикенд по Большой калужской тропе»:
+
+<!-- clips: /videos/kaluga-nikolo-lenivets-2026/pasha-p-report.mp4 -->
+
+<!-- film: https://disk.yandex.ru/i/ybjW4_WdKFP4xw | Видео Олега К | смотреть на Яндекс Диске ↗ -->
 
 <!-- clips: /videos/kaluga-nikolo-lenivets-2026/field.mp4, /videos/kaluga-nikolo-lenivets-2026/bridge.mp4, /videos/kaluga-nikolo-lenivets-2026/veranda.mp4 -->

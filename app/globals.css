@@ -1864,4 +1864,6 @@ h1, h2, h3, .section-title {
   border: 1px solid var(--line);
   border-radius: 4px;
   padding: 0.5rem;
+.trip-clips:has(> .trip-clip:only-child) {
+  grid-template-columns: minmax(0, 22rem);
 }
