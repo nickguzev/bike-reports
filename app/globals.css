@@ -2079,3 +2079,68 @@ body:has(.cover-hero:not(.cover-hero--plain)) .site-header--overlay .theme-toggl
 .trip-card__year {
   z-index: 1;
 }
+
+/* -------- compact home controls -------- */
+
+.home-title {
+  margin-bottom: 1.25rem;
+}
+
+.trip-filters {
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem;
+}
+
+.trip-filters__field {
+  min-width: 0;
+}
+
+.trip-filters select {
+  height: 2.1rem;
+  min-width: 0;
+  max-width: 100%;
+  font-size: 0.85rem;
+  padding: 0 1.9rem 0 0.8rem;
+}
+
+.trip-filters__summary {
+  padding: 0;
+  white-space: nowrap;
+}
+
+.view-switch {
+  flex: none;
+}
+
+.view-switch__btn {
+  width: 2.3rem;
+  height: 2.1rem;
+}
+
+@media (max-width: 600px) {
+  .trip-filters {
+    flex-wrap: wrap;
+  }
+  .trip-filters__field {
+    flex: 1 1 0;
+  }
+  .trip-filters select {
+    width: 100%;
+  }
+  .view-switch {
+    margin-left: 0;
+  }
+  .trip-filters__summary {
+    order: 5;
+    width: 100%;
+  }
+}
+
+.ferry-arrow {
+  display: inline-block;
+  margin: 0 0.4em;
+  vertical-align: middle;
+  color: var(--route);
+}

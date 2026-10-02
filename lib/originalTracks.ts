@@ -66,7 +66,7 @@ const MANIFEST: Record<string, { label: string; filename: string }[]> = {
     { label: "Дни 1–2 (полный, оба дня)", filename: "all-days.kmz" },
     { label: "День 2 (частичный дубль)", filename: "day-2-partial.kmz" },
   ],
-  "kaluga-nikolo-lenivets-2026": [
+  "kaluga-nikola-lenivets-2026": [
     { label: "День 1, оригинал со сбоем GPS (Калуга → Никола-Ленивец)", filename: "day-1-original.gpx" },
     { label: "День 2 (Никола-Ленивец → Калуга)", filename: "day-2-original.gpx" },
   ],

@@ -99,9 +99,13 @@ export default function TripList({ trips }: { trips: TripListItem[] }) {
     <>
       <div className="trip-filters">
         <label className="trip-filters__field">
-          <span className="trip-filters__label">участник</span>
-          <select id="filter-person" value={person} onChange={(e) => setPerson(e.target.value)}>
-            <option value="">все</option>
+          <select
+            id="filter-person"
+            aria-label="Участник"
+            value={person}
+            onChange={(e) => setPerson(e.target.value)}
+          >
+            <option value="">Все участники</option>
             {people.map((p) => (
               <option key={p.value} value={p.value}>
                 {p.value} ({p.count})
@@ -110,9 +114,13 @@ export default function TripList({ trips }: { trips: TripListItem[] }) {
           </select>
         </label>
         <label className="trip-filters__field">
-          <span className="trip-filters__label">страна</span>
-          <select id="filter-country" value={country} onChange={(e) => setCountry(e.target.value)}>
-            <option value="">все</option>
+          <select
+            id="filter-country"
+            aria-label="Страна"
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+          >
+            <option value="">Все страны</option>
             {countries.map((c) => (
               <option key={c.value} value={c.value}>
                 {c.value} ({c.count})
@@ -225,7 +233,9 @@ export default function TripList({ trips }: { trips: TripListItem[] }) {
                 <div className="trip-banner__overlay">
                   <span className="kicker">
                     {trip.year}
-                    {trip.dates && !trip.placeholder ? ` · ${trip.dates}` : ""}
+                    {trip.dates && !trip.placeholder
+                      ? ` · ${trip.dates.replace(new RegExp(`\\s*${trip.year}$`), "")}`
+                      : ""}
                   </span>
                   <span className="trip-banner__title">{trip.title}</span>
                   {trip.subtitle && <span className="trip-banner__subtitle">{trip.subtitle}</span>}

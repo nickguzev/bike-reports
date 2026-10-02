@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { getAllTrips, getYearRange } from "@/lib/trips";
 import TripList, { type TripListItem } from "@/components/TripList";
 
@@ -28,18 +27,6 @@ export default function Home() {
           {min}–{max}
         </span>
       </h1>
-
-      <nav className="home-links" aria-label="Разделы">
-        <Link href="/stats" className="home-stats-link">
-          Карта и статистика всех поездок →
-        </Link>
-        <Link href="/people" className="home-stats-link">
-          Единовеломышленники →
-        </Link>
-        <Link href="/tracks" className="home-stats-link">
-          Архив треков →
-        </Link>
-      </nav>
 
       <main>
         {trips.length === 0 ? (

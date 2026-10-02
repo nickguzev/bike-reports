@@ -154,7 +154,26 @@ export default async function TripPage({
                 {trip.route.map((point, i) => (
                   <span key={i}>
                     <strong>{point}</strong>
-                    {i < trip.route.length - 1 ? " → " : ""}
+                    {i < trip.route.length - 1 ? (
+                      trip.ferryAfter.includes(point) ? (
+                        <span className="ferry-arrow" role="img" aria-label="паром" title="паром">
+                          <svg viewBox="0 0 76 12" width="76" height="12" aria-hidden="true">
+                            <path
+                              d="M1 6c3-5 6-5 9 0s6 5 9 0 6-5 9 0 6 5 9 0 6-5 9 0 6 5 9 0 6-5 9 0h7M69 2l5 4-5 4"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </span>
+                      ) : (
+                        " → "
+                      )
+                    ) : (
+                      ""
+                    )}
                   </span>
                 ))}
               </p>

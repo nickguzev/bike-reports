@@ -4,6 +4,7 @@ subtitle: "5 стран, 641 км и 1282 ругательства, которы
 year: 2016
 country: "Черногория · Хорватия · Босния · Италия · Сан-Марино"
 dates: "1–9 мая 2016"
+routeSummary: "Тиват → Котор → Херцег-Нови → Дубровник → Неум → Макарска ~~~~~→ Анкона → Римини → Сан-Марино → Болонья"
 days: 9
 distanceKm: 649
 elevationM: 5537
@@ -25,6 +26,8 @@ route:
   - "Римини"
   - "Сан-Марино"
   - "Болонья"
+ferryAfter:
+  - "Макарска"
 source: "https://forum.awd.ru/viewtopic.php?t=290103"
 cover: "https://forum.awd.ru/gallery/images/upload/31d/0f1/31d0f1a8cb6fbeaade8718f047b83d98.jpg"
 ---

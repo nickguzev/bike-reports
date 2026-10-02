@@ -24,7 +24,7 @@ overnightStop:
   lat: 54.762955
   lon: 35.599464
   label: "Ночёвка: Никола-Ленивец"
-cover: "/images/kaluga-nikolo-lenivets-2026/d1-cafe.jpg"
+cover: "/images/kaluga-nikola-lenivets-2026/d1-cafe.jpg"
 ---
 
 <!-- author: oleg-k -->
@@ -41,30 +41,30 @@ cover: "/images/kaluga-nikolo-lenivets-2026/d1-cafe.jpg"
 
 На ужин не успели никуда... Обеда не было, ужина не было, были только перекусы. Вечером нас спасло, что у Паши в рюкзаке этот самый перекус оказался.
 
-<!-- photo: /images/kaluga-nikolo-lenivets-2026/d1-snacks.jpg -->
+<!-- photo: /images/kaluga-nikola-lenivets-2026/d1-snacks.jpg -->
 
 Я был настолько уставшим, что не смог дождаться горячего чая, которого так хотелось, и лёг спать.
 
 Ночью испытывал сушняк от обезвоживания, но не нашёл сил встать попить воды.
 
-<!-- photo: /images/kaluga-nikolo-lenivets-2026/d1-stars.jpg -->
+<!-- photo: /images/kaluga-nikola-lenivets-2026/d1-stars.jpg -->
 
 Точка :)
 
 ### Фото — день 1
 
-<!-- gallery: /images/kaluga-nikolo-lenivets-2026/d1-cafe.jpg, /images/kaluga-nikolo-lenivets-2026/d1-beer-slope.jpg, /images/kaluga-nikolo-lenivets-2026/d1-bikes-river.jpg -->
+<!-- gallery: /images/kaluga-nikola-lenivets-2026/d1-cafe.jpg, /images/kaluga-nikola-lenivets-2026/d1-beer-slope.jpg, /images/kaluga-nikola-lenivets-2026/d1-bikes-river.jpg -->
 
 ### Фото — день 2
 
-<!-- gallery: /images/kaluga-nikolo-lenivets-2026/d2-houses.jpg, /images/kaluga-nikolo-lenivets-2026/d2-morning.jpg, /images/kaluga-nikolo-lenivets-2026/d2-art.jpg, /images/kaluga-nikolo-lenivets-2026/d2-beer.jpg, /images/kaluga-nikolo-lenivets-2026/d2-repair.jpg, /images/kaluga-nikolo-lenivets-2026/d2-sunset.jpg -->
+<!-- gallery: /images/kaluga-nikola-lenivets-2026/d2-houses.jpg, /images/kaluga-nikola-lenivets-2026/d2-morning.jpg, /images/kaluga-nikola-lenivets-2026/d2-art.jpg, /images/kaluga-nikola-lenivets-2026/d2-beer.jpg, /images/kaluga-nikola-lenivets-2026/d2-repair.jpg, /images/kaluga-nikola-lenivets-2026/d2-sunset.jpg -->
 
 ### Видео
 
 Видеоотчёт [Паши П](/people/pasha-p) — «Вело-уикенд по Большой калужской тропе»:
 
-<!-- clips: /videos/kaluga-nikolo-lenivets-2026/pasha-p-report.mp4 -->
+<!-- clips: /videos/kaluga-nikola-lenivets-2026/pasha-p-report.mp4 -->
 
 <!-- film: https://disk.yandex.ru/i/ybjW4_WdKFP4xw | Видео Олега К | смотреть на Яндекс Диске ↗ -->
 
-<!-- clips: /videos/kaluga-nikolo-lenivets-2026/field.mp4, /videos/kaluga-nikolo-lenivets-2026/bridge.mp4, /videos/kaluga-nikolo-lenivets-2026/veranda.mp4 -->
+<!-- clips: /videos/kaluga-nikola-lenivets-2026/field.mp4, /videos/kaluga-nikola-lenivets-2026/bridge.mp4, /videos/kaluga-nikola-lenivets-2026/veranda.mp4 -->

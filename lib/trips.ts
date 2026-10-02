@@ -31,6 +31,8 @@ export type Trip = {
   participants: string[];
   participantCount?: number;
   route: string[];
+  /** route points after which the next leg is a ferry crossing */
+  ferryAfter: string[];
   overnightStop?: { lat: number; lon: number; label?: string };
   geo?: {
     coastPoints: TrackPoint[];
@@ -160,6 +162,7 @@ export function getTripBySlug(slug: string): Trip {
     participants: data.participants ?? [],
     participantCount: data.participantCount,
     route: data.route ?? [],
+    ferryAfter: data.ferryAfter ?? [],
     overnightStop: data.overnightStop,
     geo: data.geoCoast
       ? {
