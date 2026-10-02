@@ -2053,3 +2053,29 @@ body:has(.cover-hero:not(.cover-hero--plain)) .site-header--overlay .theme-toggl
   color: var(--ink-faint);
   text-shadow: none;
 }
+
+/* cards view: same darkened photo treatment as the banners */
+.trip-card__cover:not(.trip-card__cover--empty) {
+  background: #0b0e0a;
+}
+
+.trip-card__cover:not(.trip-card__cover--empty) img {
+  opacity: 0.7;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.trip-card:hover .trip-card__cover:not(.trip-card__cover--empty) img {
+  opacity: 0.8;
+}
+
+.trip-card__cover:not(.trip-card__cover--empty)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 13, 9, 0.9) 0%, rgba(10, 13, 9, 0.3) 55%, rgba(10, 13, 9, 0) 100%);
+  pointer-events: none;
+}
+
+.trip-card__year {
+  z-index: 1;
+}
