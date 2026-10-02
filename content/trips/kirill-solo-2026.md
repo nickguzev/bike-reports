@@ -20,6 +20,7 @@ dailyKm:
   - 135.0
 participants:
   - "Кирилл"
+cover: "/images/kirill-solo-2026/cover.jpg"
 ---
 
 <!-- author: kirill -->
