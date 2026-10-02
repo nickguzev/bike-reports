@@ -18,9 +18,12 @@ export default function SiteHeader() {
   return (
     <header className={`site-header${overlay ? " site-header--overlay" : ""}`}>
       <div className="site-header__inner">
-        <Link href="/" className="site-header__logo">
-          Велотрипы
-        </Link>
+        {/* the home page already carries the big title, so no logo there */}
+        {pathname !== "/" && (
+          <Link href="/" className="site-header__logo">
+            Велотрипы
+          </Link>
+        )}
         <nav className="site-header__nav" aria-label="Разделы">
           {NAV.map((item) => (
             <Link
@@ -31,6 +34,14 @@ export default function SiteHeader() {
               {item.label}
             </Link>
           ))}
+          <a
+            href="https://moscross-nickguzev-2002s-projects.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="site-header__link"
+          >
+            Протыки Москвы ↗
+          </a>
         </nav>
         <ThemeToggle />
       </div>
