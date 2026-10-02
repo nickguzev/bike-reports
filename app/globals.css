@@ -2142,5 +2142,5 @@ body:has(.cover-hero:not(.cover-hero--plain)) .site-header--overlay .theme-toggl
   display: inline-block;
   margin: 0 0.4em;
   vertical-align: middle;
-  color: var(--route);
+  color: var(--ink);
 }
