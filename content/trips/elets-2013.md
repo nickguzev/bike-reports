@@ -19,6 +19,7 @@ route:
   - "Липецк"
   - "Елец"
 source: "https://forum.awd.ru/viewtopic.php?t=208617"
+cover: "https://forum.awd.ru/files/30/14/65742_d58ee5d3930b27956f6e966344cb2fd8.jpg"
 ---
 
 <!-- author: kirill -->

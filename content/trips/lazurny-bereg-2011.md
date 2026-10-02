@@ -64,6 +64,7 @@ geoCities:
   - {lat: 43.7102, lon: 7.2620, name: "Ницца"}
   - {lat: 43.7384, lon: 7.4246, name: "Монако"}
 geoMountains: north
+cover: "https://forum.awd.ru/files/10/87/65742_2c57559fef9ad830cd9aa4d4610d72dd.jpg"
 ---
 
 <!-- author: zhenyok -->

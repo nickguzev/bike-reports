@@ -27,6 +27,7 @@ route:
   - "Азов"
   - "Ростов-на-Дону"
 source: "https://forum.awd.ru/viewtopic.php?t=367591"
+cover: "https://lh3.googleusercontent.com/rbaHQqFbPg2opcPYgekjQY-90WewYVVI0Y7OlsIssFBfCZPd2YzucxhYECxiUoa4yuBH594tz09sO6I_fh0OqkdFshRBAPnxElzSmL1coLZTdPg3gGKeN-mLEzCbRGLz50mU3csjmDx0qiyWRhpHK1ZxjZazdA_3tKvYT9_3APYZDWXbcy4M-x7dJxZXV7W9fT6ajC5DKQY2TJR8Fp53YWIb9jcMHF1SHox0WZP9hq-lmjHgomsLr5q0DYA2s8jjs_jC30du2b2tdrJ6vuMmVAGI-bY57GZPDBkReAJh5I0oMbvHziCD9SuUGFOVZH0t4apEmUxJyFtfDOcMuDa-BeS_cdUHBG9EJBLneey5E-HQD93mRpGnq8n3vDALfI4_ORRGavODKfbdMa-latUZiDrES-9jgKD32FV2obfBaiDaAhcGH8pe8KCX_L9pxb_00050NNiOe7tttpISw0h_iYsi4On9iQdFgC3o-ntQFtIB5QWKOHiAbsrlhJuI7wu8ApXryvWQ8b6tHmTc-NHoZqrM9Orpd6Lf_gO2GzSUQk9D9gkayJgcXKXdQ65iQYbqteVIVIXzAcOfjupOmuSLOB5BSZWQTGmHuccFECqeHvm5Wl-9w9uhQMEoox00BhzEpDKlFrtIyxbO8Nr2oLpQFDIWa1_4QBkf=w1186-h669-no"
 ---
 
 <!-- author: kirill -->

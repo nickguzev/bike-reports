@@ -24,6 +24,7 @@ route:
   - "Аттерзе"
   - "Зальцбург"
 source: "https://forum.awd.ru/viewtopic.php?t=433416"
+cover: "https://forum.awd.ru/gallery/images/upload/883/eb7/883eb7d8c880f497a0f1569b3298fd9b.jpg"
 ---
 
 <!-- author: kirill -->

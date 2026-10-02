@@ -6,7 +6,6 @@ order: 3
 country: "Россия"
 routeSummary: "Калуга → Никола-Ленивец → Калуга"
 dates: "19–20 сентября 2026"
-cover: "/images/kaluga-nikolo-lenivets-2026/d1-bikes-river.jpg"
 days: 2
 distanceKm: 152
 elevationM: 530
@@ -25,6 +24,7 @@ overnightStop:
   lat: 54.762955
   lon: 35.599464
   label: "Ночёвка: Никола-Ленивец"
+cover: "/images/kaluga-nikolo-lenivets-2026/d1-cafe.jpg"
 ---
 
 <!-- author: oleg-k -->

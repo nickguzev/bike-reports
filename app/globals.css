@@ -1,5 +1,33 @@
 :root {
-  /* Journal: deep forest night, warm paper type, ember accent */
+  /* Light (default): warm paper, forest ink, rust accent */
+  --paper: #f3eee1;
+  --paper-dim: #e8e1cd;
+  --paper-raised: #fbf8ef;
+  --ink: #212f1f;
+  --ink-soft: #4c5744;
+  --ink-faint: #6f7863;
+  --route: #b8481a;
+  --route-strong: #c1501b;
+  --route-soft: #dd9c72;
+  --moss: #445c3c;
+  --line: #cfc5a8;
+  --on-accent: #fffaf0;
+  --on-ink: #f3eee1;
+
+  --font-display: var(--font-condensed), "Arial", sans-serif;
+  --font-body: var(--font-source-serif), Georgia, serif;
+
+  --measure: 42rem;
+  --wide: 76rem;
+  color-scheme: light;
+}
+
+/* Dark (option, header toggle): deep forest night, warm paper type, ember accent.
+   The same values are reused for anything laid over a photo, in either theme. */
+:root[data-theme="dark"],
+.cover-hero:not(.cover-hero--plain),
+.trip-banner__media:not(.trip-banner__media--empty),
+body:has(.cover-hero:not(.cover-hero--plain)) .site-header--overlay {
   --paper: #141a13;
   --paper-dim: #1d251b;
   --paper-raised: #232d21;
@@ -11,12 +39,11 @@
   --route-soft: #7a4e36;
   --moss: #a9c39a;
   --line: #333d30;
+  --on-accent: #141a13;
+  --on-ink: #141a13;
+}
 
-  --font-display: var(--font-condensed), "Arial", sans-serif;
-  --font-body: var(--font-source-serif), Georgia, serif;
-
-  --measure: 42rem;
-  --wide: 76rem;
+:root[data-theme="dark"] {
   color-scheme: dark;
 }
 
@@ -1076,7 +1103,7 @@ h1, h2, h3, .section-title {
   border-bottom: 1px solid var(--line);
 }
 
-.site-header--overlay {
+body:has(.cover-hero:not(.cover-hero--plain)) .site-header--overlay {
   position: absolute;
   left: 0;
   right: 0;
@@ -1221,7 +1248,7 @@ h1, h2, h3, .section-title {
 }
 
 .cover-hero--plain .cover-hero__body {
-  padding-top: 7.5rem;
+  padding-top: 3.5rem;
   padding-bottom: 2rem;
 }
 
@@ -1268,7 +1295,7 @@ h1, h2, h3, .section-title {
   font-weight: 500;
   font-size: 0.85rem;
   text-decoration: none;
-  color: #141a13;
+  color: var(--on-ink);
   background: var(--ink);
   padding: 0.95rem 1.5rem;
   border-radius: 999px;
@@ -1276,7 +1303,7 @@ h1, h2, h3, .section-title {
 
 .pill-button:hover {
   background: var(--route);
-  color: #141a13;
+  color: var(--on-accent);
 }
 
 .cover-hero__meta {
@@ -1340,11 +1367,11 @@ h1, h2, h3, .section-title {
 
 .chip--on {
   background: var(--ink);
-  color: #141a13;
+  color: var(--on-ink);
 }
 
 .chip--on:hover {
-  color: #141a13;
+  color: var(--on-ink);
 }
 
 .card-grid {
@@ -1570,7 +1597,7 @@ h1, h2, h3, .section-title {
 
 .author-block .avatar {
   background: var(--route-strong);
-  color: #141a13;
+  color: var(--on-accent);
 }
 
 .trip-body a {
@@ -1589,7 +1616,7 @@ h1, h2, h3, .section-title {
 
 .trip-film__play {
   background: var(--route-strong);
-  color: #141a13;
+  color: var(--on-accent);
 }
 
 .interactive-map {
@@ -1715,7 +1742,11 @@ h1, h2, h3, .section-title {
   letter-spacing: -0.02em;
 }
 
-.trip-banner:hover .trip-banner__title {
+.trip-banner__media {
+  color: var(--ink);
+}
+
+.trip-banner:hover .trip-banner__media:not(.trip-banner__media--empty) .trip-banner__title {
   color: #fff;
 }
 
@@ -1868,4 +1899,157 @@ h1, h2, h3, .section-title {
 
 .trip-clips:has(> .trip-clip:only-child) {
   grid-template-columns: minmax(0, 22rem);
+}
+
+/* -------- theme toggle + list view switch -------- */
+
+.site-header__inner {
+  flex-wrap: nowrap;
+}
+
+.site-header__nav {
+  margin-left: auto;
+}
+
+.theme-toggle {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--route);
+  border-color: var(--route);
+}
+
+body:has(.cover-hero:not(.cover-hero--plain)) .site-header--overlay .theme-toggle {
+  border-color: color-mix(in srgb, var(--ink) 35%, transparent);
+}
+
+.theme-toggle__sun,
+:root[data-theme="dark"] .theme-toggle__moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle__sun {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .site-header__inner {
+    flex-wrap: wrap;
+    position: relative;
+    padding-right: 4rem;
+  }
+  .theme-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 0.45rem;
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
+.trip-filters {
+  align-items: flex-end;
+}
+
+.view-switch {
+  margin-left: auto;
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--paper-dim);
+}
+
+.view-switch__btn {
+  width: 2.6rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--ink-faint);
+  cursor: pointer;
+}
+
+.view-switch__btn:hover {
+  color: var(--ink);
+}
+
+.view-switch__btn--on {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+
+.view-switch__btn--on:hover {
+  color: var(--on-ink);
+}
+
+.trip-card__meta {
+  display: flex;
+  gap: 1rem;
+}
+
+.trip-card__meta b {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.trip-row__stats > span {
+  white-space: nowrap;
+}
+
+.trip-row__stats b {
+  color: var(--ink);
+}
+
+.cover-hero:not(.cover-hero--plain) {
+  color: var(--ink);
+}
+
+.trip-row__stats > span {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.trip-row__stats b {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.trip-row {
+  padding: 0.8rem 0;
+}
+
+@media (max-width: 600px) {
+  .trip-row {
+    grid-template-columns: 3.2rem 1fr;
+    gap: 0.2rem 0.9rem;
+  }
+  .trip-row__stats,
+  .trip-row__soon {
+    grid-column: 2;
+  }
+  .view-switch {
+    margin-left: 0;
+  }
+}
+
+.trip-card__cover--empty .trip-card__year {
+  color: var(--ink-faint);
+  text-shadow: none;
 }

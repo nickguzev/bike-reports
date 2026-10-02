@@ -26,6 +26,7 @@ route:
   - "Сан-Марино"
   - "Болонья"
 source: "https://forum.awd.ru/viewtopic.php?t=290103"
+cover: "https://forum.awd.ru/gallery/images/upload/31d/0f1/31d0f1a8cb6fbeaade8718f047b83d98.jpg"
 ---
 
 <!-- author: kirill -->

@@ -28,6 +28,7 @@ route:
   - "Ницца"
   - "Вильфранш-сюр-Мер"
 source: "https://forum.awd.ru/viewtopic.php?t=421717"
+cover: "https://forum.awd.ru/gallery/images/upload/60d/c1d/60dc1dc647be06cf4b681e79f81d4f37.jpg"
 ---
 
 <!-- author: kirill -->

@@ -19,6 +19,7 @@ route:
   - "Витебск"
   - "Орша"
 source: "https://forum.awd.ru/viewtopic.php?t=168052"
+cover: "https://forum.awd.ru/files/18/85/65742_262dc852abb366993b3034f897793260.jpg"
 ---
 
 <!-- author: kirill -->

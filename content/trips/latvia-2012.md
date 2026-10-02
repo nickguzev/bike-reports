@@ -43,6 +43,7 @@ geoCities:
 geoMountains: none
 geoSea: west
 source: "https://forum.awd.ru/viewtopic.php?t=155988"
+cover: "https://forum.awd.ru/files/15/78/93902_fbfa109e8da8a8f7c3dececa0e715b47.jpg"
 ---
 
 <!-- author: zhenyok -->

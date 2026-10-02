@@ -30,6 +30,7 @@ route:
   - "Нарва"
   - "Ивангород"
 source: "https://forum.awd.ru/viewtopic.php?t=318425"
+cover: "https://forum.awd.ru/gallery/images/upload/e68/f42/e68f426fa92037e7e1e16c5013079ada.jpg"
 ---
 
 <!-- author: kirill -->

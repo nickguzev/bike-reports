@@ -30,7 +30,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${unbounded.variable} ${sourceSerif.variable}`}>
+    <html lang="ru" className={`${unbounded.variable} ${sourceSerif.variable}`} suppressHydrationWarning>
+      <head>
+        {/* apply the saved theme before first paint, so pages never flash the wrong one */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(localStorage.getItem('site-theme')==='dark')document.documentElement.dataset.theme='dark'}catch(e){}",
+          }}
+        />
+      </head>
       <body>
         <SiteHeader />
         {children}

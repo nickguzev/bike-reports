@@ -29,6 +29,7 @@ route:
   - "Чичестер"
   - "Тествуд-Лейкс"
 source: "https://forum.awd.ru/viewtopic.php?t=436630"
+cover: "https://forum.awd.ru/gallery/images/upload/f57/af0/f57af01d5655851d6bc5cfe3a18ae4b6.jpg"
 ---
 
 <!-- author: kirill -->

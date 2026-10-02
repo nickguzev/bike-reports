@@ -3,35 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { setOptions, importLibrary } from "@googlemaps/js-api-loader";
 import type { TrackPoint, CategorizedSegment } from "@/lib/gpx";
+import { MAP_PALETTE, useTheme } from "@/lib/mapTheme";
 import RouteMap, { CATEGORY_COLORS, CATEGORY_LABELS } from "@/components/RouteMap";
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-const DAY_COLORS = ["#f09a68", "#a9c39a", "#e6cf8a", "#d98ab0", "#8fc1d4"];
-
-// Muted "paper" map styling to match the site's palette instead of Google's defaults.
-const PAPER_STYLE: google.maps.MapTypeStyle[] = [
-  { elementType: "geometry", stylers: [{ color: "#1d251b" }] },
-  { elementType: "labels.text.fill", stylers: [{ color: "#a39e8e" }] },
-  { elementType: "labels.text.stroke", stylers: [{ color: "#141a13" }] },
-  { featureType: "administrative", elementType: "labels.text.fill", stylers: [{ color: "#cfc8b4" }] },
-  { featureType: "administrative", elementType: "geometry", stylers: [{ color: "#3b4637" }] },
-  { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#1d251b" }] },
-  { featureType: "poi", stylers: [{ visibility: "off" }] },
-  { featureType: "road", elementType: "geometry", stylers: [{ color: "#2c3629" }] },
-  { featureType: "road", elementType: "labels", stylers: [{ visibility: "off" }] },
-  { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#39452f" }] },
-  { featureType: "transit", stylers: [{ visibility: "off" }] },
-  { featureType: "water", elementType: "geometry", stylers: [{ color: "#0f1b1c" }] },
-];
-
-// Google Maps needs real hex colors, not our CSS custom properties.
-const CATEGORY_HEX: Record<CategorizedSegment["category"], string> = {
-  cycling: "#f09a68",
-  hiking: "#a9c39a",
-  walk: "#e6cf8a",
-  transport: "#a39e8e",
-};
-
 type StopMarker = { lat: number; lon: number; label?: string };
 
 type Props = {
@@ -52,6 +27,7 @@ export default function InteractiveMap({
   geo,
 }: Props) {
   const mapRef = useRef<HTMLDivElement>(null);
+  const theme = useTheme();
   const hasData =
     (categorizedTrack?.length ?? 0) > 0 || (dayTracks?.length ?? 0) > 0 || (track?.length ?? 0) > 1;
   const [status, setStatus] = useState<"loading" | "ready" | "error">(
@@ -60,6 +36,7 @@ export default function InteractiveMap({
 
   useEffect(() => {
     if (!API_KEY || !mapRef.current) return;
+    const pal = MAP_PALETTE[theme];
 
     const hasCategorized = categorizedTrack && categorizedTrack.length > 0;
     const days: TrackPoint[][][] = dayTracks?.length
@@ -77,7 +54,7 @@ export default function InteractiveMap({
         if (!mapRef.current) return;
 
         const map = new google.maps.Map(mapRef.current, {
-          styles: PAPER_STYLE,
+          styles: pal.styles as google.maps.MapTypeStyle[],
           disableDefaultUI: false,
           streetViewControl: false,
           mapTypeControl: false,
@@ -92,7 +69,7 @@ export default function InteractiveMap({
             const isTransport = seg.category === "transport";
             new google.maps.Polyline({
               path,
-              strokeColor: CATEGORY_HEX[seg.category],
+              strokeColor: pal.category[seg.category],
               strokeOpacity: isTransport ? 0.55 : 0.9,
               strokeWeight: isTransport ? 2 : 3,
               icons: isTransport
@@ -110,7 +87,7 @@ export default function InteractiveMap({
           });
         } else {
           days.forEach((segments, dayIndex) => {
-            const color = DAY_COLORS[dayIndex % DAY_COLORS.length];
+            const color = pal.dayColors[dayIndex % pal.dayColors.length];
             segments.forEach((seg) => {
               const path = seg.map((p) => ({ lat: p.lat, lng: p.lon }));
               new google.maps.Polyline({
@@ -132,11 +109,11 @@ export default function InteractiveMap({
           new google.maps.Marker({
             position: { lat: firstPoint.lat, lng: firstPoint.lon },
             map,
-            label: { text: "1", color: "#141a13", fontSize: "11px", fontWeight: "700" },
+            label: { text: "1", color: pal.startLabel, fontSize: "11px", fontWeight: "700" },
             icon: {
               path: google.maps.SymbolPath.CIRCLE,
               scale: 9,
-              fillColor: "#f09a68",
+              fillColor: pal.startFill,
               fillOpacity: 1,
               strokeWeight: 0,
             },
@@ -147,9 +124,9 @@ export default function InteractiveMap({
             icon: {
               path: google.maps.SymbolPath.CIRCLE,
               scale: 8,
-              fillColor: "#141a13",
+              fillColor: pal.endFill,
               fillOpacity: 1,
-              strokeColor: "#eee8d8",
+              strokeColor: pal.endStroke,
               strokeWeight: 2,
             },
           });
@@ -163,9 +140,9 @@ export default function InteractiveMap({
             icon: {
               path: google.maps.SymbolPath.CIRCLE,
               scale: 7,
-              fillColor: "#141a13",
+              fillColor: pal.endFill,
               fillOpacity: 1,
-              strokeColor: "#a9c39a",
+              strokeColor: pal.stopStroke,
               strokeWeight: 2.5,
             },
           });
@@ -177,7 +154,7 @@ export default function InteractiveMap({
       })
       .catch(() => setStatus("error"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [theme]);
 
   if (status === "error") {
     return (

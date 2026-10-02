@@ -28,6 +28,7 @@ route:
   - "Кемер"
   - "Анталья"
 source: "https://forum.awd.ru/viewtopic.php?t=412268"
+cover: "https://forum.awd.ru/gallery/images/upload/313/f11/313f110180a1169a84fa0f98c406335f.jpg"
 ---
 
 <!-- author: kirill -->

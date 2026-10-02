@@ -4,23 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { setOptions, importLibrary } from "@googlemaps/js-api-loader";
 import type { TrackPoint } from "@/lib/gpx";
+import { MAP_PALETTE, useTheme } from "@/lib/mapTheme";
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-
-const PAPER_STYLE: google.maps.MapTypeStyle[] = [
-  { elementType: "geometry", stylers: [{ color: "#1d251b" }] },
-  { elementType: "labels.text.fill", stylers: [{ color: "#a39e8e" }] },
-  { elementType: "labels.text.stroke", stylers: [{ color: "#141a13" }] },
-  { featureType: "administrative", elementType: "labels.text.fill", stylers: [{ color: "#cfc8b4" }] },
-  { featureType: "administrative", elementType: "geometry", stylers: [{ color: "#3b4637" }] },
-  { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#1d251b" }] },
-  { featureType: "poi", stylers: [{ visibility: "off" }] },
-  { featureType: "road", elementType: "geometry", stylers: [{ color: "#2c3629" }] },
-  { featureType: "road", elementType: "labels", stylers: [{ visibility: "off" }] },
-  { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#39452f" }] },
-  { featureType: "transit", stylers: [{ visibility: "off" }] },
-  { featureType: "water", elementType: "geometry", stylers: [{ color: "#0f1b1c" }] },
-];
 
 export type TripTrack = {
   slug: string;
@@ -29,13 +15,15 @@ export type TripTrack = {
   points: TrackPoint[]; // flattened, single line is enough for an overview map
 };
 
-function colorForIndex(i: number, total: number): string {
+function colorForIndex(i: number, total: number, lightness: number): string {
   const hue = Math.round((i / Math.max(total, 1)) * 320); // avoid wrapping into near-duplicate reds
-  return `hsl(${hue}, 65%, 62%)`;
+  return `hsl(${hue}, 65%, ${lightness}%)`;
 }
 
 export default function AllTracksMap({ tracks }: { tracks: TripTrack[] }) {
   const mapRef = useRef<HTMLDivElement>(null);
+  const theme = useTheme();
+  const pal = MAP_PALETTE[theme];
   const [status, setStatus] = useState<"loading" | "ready" | "error">(
     API_KEY ? "loading" : "error"
   );
@@ -54,7 +42,7 @@ export default function AllTracksMap({ tracks }: { tracks: TripTrack[] }) {
       .then(() => {
         if (!mapRef.current) return;
         const map = new google.maps.Map(mapRef.current, {
-          styles: PAPER_STYLE,
+          styles: pal.styles as google.maps.MapTypeStyle[],
           disableDefaultUI: false,
           streetViewControl: false,
           mapTypeControl: false,
@@ -66,7 +54,7 @@ export default function AllTracksMap({ tracks }: { tracks: TripTrack[] }) {
           const path = t.points.map((p) => ({ lat: p.lat, lng: p.lon }));
           const poly = new google.maps.Polyline({
             path,
-            strokeColor: colorForIndex(i, tracks.length),
+            strokeColor: colorForIndex(i, tracks.length, pal.overviewLightness),
             strokeOpacity: 0.8,
             strokeWeight: 2.5,
             map,
@@ -80,7 +68,7 @@ export default function AllTracksMap({ tracks }: { tracks: TripTrack[] }) {
       })
       .catch(() => setStatus("error"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [theme]);
 
   useEffect(() => {
     for (const [slug, poly] of Object.entries(polylines.current)) {
@@ -121,7 +109,7 @@ export default function AllTracksMap({ tracks }: { tracks: TripTrack[] }) {
           >
             <span
               className="all-tracks-legend__swatch"
-              style={{ background: colorForIndex(i, tracks.length) }}
+              style={{ background: colorForIndex(i, tracks.length, pal.overviewLightness) }}
             />
             <span>
               {t.year} — {t.title}

@@ -23,6 +23,7 @@ route:
   - "Кинсарвик"
   - "Берген"
 source: "https://forum.awd.ru/viewtopic.php?t=348502"
+cover: "https://forum.awd.ru/gallery/images/upload/1ca/55c/1ca55c6de41dcaa1b2944e48ad98c786.jpg"
 ---
 
 <!-- author: kirill -->

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const NAV = [
   { href: "/", label: "Поездки", match: (p: string) => p === "/" || p.startsWith("/trips") },
@@ -31,6 +32,7 @@ export default function SiteHeader() {
             </Link>
           ))}
         </nav>
+        <ThemeToggle />
       </div>
     </header>
   );
