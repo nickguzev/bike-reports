@@ -10,6 +10,8 @@ import TripPager from "@/components/TripPager";
 import PhotoLightbox from "@/components/PhotoLightbox";
 import { plural } from "@/lib/plural";
 
+import { ExtArrow } from "@/components/SiteHeader";
+
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
 }
@@ -103,7 +105,7 @@ export default async function TripPage({
                     rel="noopener noreferrer"
                     className="route-map__caption"
                   >
-                    Источник трека ↗
+                    Источник трека <ExtArrow />
                   </a>
                 )}
               </div>

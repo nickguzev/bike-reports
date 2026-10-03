@@ -33,6 +33,8 @@ route:
   - "Гульборг"
   - "Кёге"
   - "Копенгаген"
+ferryAfter:
+  - "Клайпеда"
 source: "https://forum.awd.ru/viewtopic.php?t=227158"
 cover: "https://forum.awd.ru/gallery/images/upload/565/080/5650806406dbd7af352e38799f760d8f.jpg"
 ---

@@ -65,6 +65,6 @@ cover: "/images/kaluga-nikola-lenivets-2026/d1-cafe.jpg"
 
 <!-- clips: /videos/kaluga-nikola-lenivets-2026/pasha-p-report.mp4 -->
 
-<!-- film: https://disk.yandex.ru/i/ybjW4_WdKFP4xw | Видео Олега К | смотреть на Яндекс Диске ↗ -->
+<!-- film: https://disk.yandex.ru/i/ybjW4_WdKFP4xw | Видео Олега К | смотреть на Яндекс Диске -->
 
 <!-- clips: /videos/kaluga-nikola-lenivets-2026/field.mp4, /videos/kaluga-nikola-lenivets-2026/bridge.mp4, /videos/kaluga-nikola-lenivets-2026/veranda.mp4 -->

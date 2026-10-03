@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Unbounded, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import { getYearRange } from "@/lib/trips";
-import SiteHeader from "@/components/SiteHeader";
+import SiteHeader, { ExtArrow } from "@/components/SiteHeader";
 
 const unbounded = Unbounded({
   variable: "--font-condensed",
@@ -49,7 +49,7 @@ export default function RootLayout({
               Велотрипы · {min}–{max}
             </span>
             <a href="https://moscross-nickguzev-2002s-projects.vercel.app" target="_blank" rel="noopener noreferrer">
-              Ещё наш проект — Протыки Москвы ↗
+              Ещё наш проект — Протыки Москвы <ExtArrow />
             </a>
           </div>
         </footer>

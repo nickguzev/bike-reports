@@ -22,6 +22,8 @@ route:
   - "Красный Профинтерн"
   - "Некрасовское"
   - "Кострома"
+ferryAfter:
+  - "Красный Профинтерн"
 source: "https://forum.awd.ru/viewtopic.php?t=268254"
 cover: "https://lh3.googleusercontent.com/17sFlYHBUsc7Ahz8xePA-8cUV9i1djwuN9oAooIEFEf0=w2400"
 ---

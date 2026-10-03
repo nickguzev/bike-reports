@@ -2144,3 +2144,58 @@ body:has(.cover-hero:not(.cover-hero--plain)) .site-header--overlay .theme-toggl
   vertical-align: middle;
   color: var(--ink);
 }
+
+/* -------- fixes: external arrow, trip pager on narrow screens -------- */
+
+.ext-arrow {
+  display: inline-block;
+  vertical-align: baseline;
+  margin-left: 0.15em;
+}
+
+.trip-pager__link > span:not(.trip-pager__arrow) {
+  min-width: 0;
+}
+
+.trip-pager__title {
+  white-space: normal;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  line-height: 1.2;
+}
+
+@media (max-width: 600px) {
+  .trip-pager {
+    gap: 0.75rem;
+  }
+  .trip-pager__link {
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .trip-pager__title {
+    font-size: 0.85rem;
+  }
+  .trip-pager__arrow {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+}
+
+/* trip pages: header is just logo + theme toggle, on one line */
+@media (max-width: 640px) {
+  .site-header--overlay .site-header__inner {
+    padding-block: 0.6rem;
+  }
+}
+
+/* section menu never scrolls sideways: it wraps onto a second line instead */
+@media (max-width: 640px) {
+  .site-header__nav {
+    overflow-x: visible;
+    flex-wrap: wrap;
+    gap: 0 1.1rem;
+  }
+  .site-header__link {
+    padding: 0.5rem 0;
+  }
+}

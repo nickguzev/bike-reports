@@ -129,7 +129,7 @@ export function getTripBySlug(slug: string): Trip {
   // External film link card (<!-- film: url | title | note -->).
   contentHtml = contentHtml.replace(/<!--\s*film:\s*([\s\S]*?)-->/g, (_match, body: string) => {
     const [url, title, note] = body.split("|").map((s) => s.trim());
-    return `<a class="trip-film" href="${url}" target="_blank" rel="noopener noreferrer"><span class="trip-film__play" aria-hidden="true">▶</span><span><span class="trip-film__title">${title ?? "Смотреть видео"}</span>${note ? `<span class="trip-film__note">${note}</span>` : ""}</span></a>`;
+    return `<a class="trip-film" href="${url}" target="_blank" rel="noopener noreferrer"><span class="trip-film__play" aria-hidden="true">▶&#xFE0E;</span><span><span class="trip-film__title">${title ?? "Смотреть видео"}</span>${note ? `<span class="trip-film__note">${note}</span>` : ""}</span></a>`;
   });
 
   // Video markers (<!-- video: instagram-url -->) render as Instagram's own
