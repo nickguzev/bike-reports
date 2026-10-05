@@ -48,7 +48,7 @@ export default function RootLayout({
             <span>
               Велотрипы · {min}–{max}
             </span>
-            <a href="https://moscross-nickguzev-2002s-projects.vercel.app" target="_blank" rel="noopener noreferrer">
+            <a href="https://moscross.vercel.app" target="_blank" rel="noopener noreferrer">
               Ещё наш проект — Протыки Москвы <ExtArrow />
             </a>
           </div>

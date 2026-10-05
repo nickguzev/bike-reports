@@ -46,7 +46,7 @@ export default function SiteHeader() {
               </Link>
             ))}
             <a
-              href="https://moscross-nickguzev-2002s-projects.vercel.app"
+              href="https://moscross.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
               className="site-header__link"
