@@ -4,7 +4,7 @@ subtitle: "277 км пробега и 288 не попадающих друг н�
 year: 2012
 order: 1
 country: "Латвия"
-dates: "4–9 мая 2012"
+dates: "5–9 мая 2012"
 days: 4
 distanceKm: 277
 participants:
