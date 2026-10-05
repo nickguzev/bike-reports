@@ -5,7 +5,7 @@ year: 2012
 order: 2
 country: "Беларусь"
 routeSummary: "Витебск → Орша"
-dates: "август 2012"
+dates: "25–26 августа 2012"
 days: 2
 distanceKm: 120
 elevationM: 305
